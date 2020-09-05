@@ -33,10 +33,12 @@ class UserController extends Controller
             $users = $users->where('id',request('id'));
         }
 
+        $users_excel = $users->latest()->get();
         $users = $users->latest()->paginate(15);
 
         return view( 'admin.user.index' , [
             'users' => $users ,
+            'users_excel' => $users_excel ,
         ]);
     }
 
