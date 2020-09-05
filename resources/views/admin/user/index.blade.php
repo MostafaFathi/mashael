@@ -154,6 +154,8 @@
 
                                     <th>{{__('Last name')}}</th>
 
+                                    <th>{{__('Gender')}}</th>
+
                                     <th>{{__('Email')}}</th>
 
                                     <th>{{__('Status')}}</th>
@@ -177,14 +179,16 @@
                                     <td>{{ $user->firstname }}</td>
 
                                     <td>{{ $user->lastname }}</td>
+                                    <td>{{ $user->gender_name }}</td>
 
                                     <td>{{ $user->email }}</td>
 
                                     <td>{!! $user->status == "Active" ? '<span class="m-badge m-badge--success m-badge--dot"></span>&nbsp;<span class="m--font-bold m--font-success">'.__('Active').'</span>' : '<span class="m-badge m-badge--danger m-badge--dot"></span>&nbsp;<span class="m--font-bold m--font-danger">'.__('Inactive').'</span>' !!}</td>
 
-                                    <td style="width: 180px;">
+                                    <td style="width: 250px;text-align: center">
 
                                         <a href="{{ route('admin::user.edit' , $user->id ) }}" class="btn btn-xs btn-info" title="Edit details"><i class="fa fa-edit"></i> {{__('Edit')}}</a>
+                                        <a href="{{ route('admin::user.show' , $user->id ) }}" class="btn btn-xs btn-primary" title="Show"><i class="fa fa-list"></i> {{__('Show')}}</a>
 
                                         <form action="{{ route('admin::user.destroy' ,$user->id ) }}" method="post" class="Delete" style="display: inline-block;" >
 

@@ -8,12 +8,12 @@
 
             <div class="breadcrumb-center d-table">
 
-            <h3>{{ __('Register') }}</h3>
+                <h3>{{ __('Register') }}</h3>
 
                 <nav>
                     <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('site::home')}}">الرئيسية</a></li>
-                    <li class="breadcrumb-item active">{{ __('Register') }}</li>
+                        <li class="breadcrumb-item"><a href="{{route('site::home')}}">الرئيسية</a></li>
+                        <li class="breadcrumb-item active">{{ __('Register') }}</li>
                     </ol>
                 </nav>
             </div>
@@ -60,7 +60,34 @@
                                     </span>
                             @enderror
                         </div>
+                        <div class="form-control">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="male" value="m" name="gender">
+                                <label class="custom-control-label" for="male">{{ __('Male') }}</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="female" value="f" name="gender">
+                                <label class="custom-control-label" for="female">{{ __('Female') }}</label>
+                            </div>
 
+                            @error('gender')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                        <div class="form-row">
+
+                            <input id="age" type="number" placeholder="{{ __('Age') }}"
+                                   class="form-control @error('age') is-invalid @enderror" name="age"
+                                   value="{{ old('age') }}" required autocomplete="age" autofocus>
+
+                            @error('age')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
                         <div class="form-row">
 
                             <input id="email" type="email" placeholder="{{ __('E-Mail Address') }}"
@@ -91,10 +118,13 @@
 
                         <div class="form-row">
 
-                            <input id="country" type="text" placeholder="{{ __('Country') }}"
-                                   class="form-control @error('country') is-invalid @enderror" name="country"
-                                   value="{{ old('country') }}" required autocomplete="country">
-
+                            <select id="country" type="text" placeholder="{{ __('Country') }}"
+                                    class="form-control m-bootstrap-select m-bootstrap-select--solid m_form_type @error('country') is-invalid @enderror" name="country"
+                                     required autocomplete="country">
+                                @foreach($countries as $country)
+                                    <option value="{{$country->name}}" {{ old('country') == $country->name ? 'selected' : '' }}>{{$country->name}}</option>
+                                @endforeach
+                            </select>
                             @error('country')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -145,19 +175,19 @@
 
                         </div>
 
-{{--                        <div class="form-row">--}}
+                        {{--                        <div class="form-row">--}}
 
-{{--                            <input id="post_code" type="text" placeholder="{{ __('Post_code') }}"--}}
-{{--                                   class="form-control @error('post_code') is-invalid @enderror" name="post_code"--}}
-{{--                                   value="{{ old('post_code') }}" required autocomplete="post_code">--}}
+                        {{--                            <input id="post_code" type="text" placeholder="{{ __('Post_code') }}"--}}
+                        {{--                                   class="form-control @error('post_code') is-invalid @enderror" name="post_code"--}}
+                        {{--                                   value="{{ old('post_code') }}" required autocomplete="post_code">--}}
 
-{{--                            @error('post_code')--}}
-{{--                            <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                            @enderror--}}
+                        {{--                            @error('post_code')--}}
+                        {{--                            <span class="invalid-feedback" role="alert">--}}
+                        {{--                                        <strong>{{ $message }}</strong>--}}
+                        {{--                                    </span>--}}
+                        {{--                            @enderror--}}
 
-{{--                        </div>--}}
+                        {{--                        </div>--}}
 
                         <div class="form-row">
 

@@ -66,6 +66,14 @@ class UserController extends Controller
         return redirect()->route('admin::user.index')->with('success',__('added'));
     }
 
+    public function show( $id = 0 )
+    {
+    	$user = User::find($id);
+
+        return view( 'admin.user.show' , [
+        	'user' => $user ,
+        ]);
+    }
     public function edit( $id = 0 )
     {
     	$user = User::find($id);

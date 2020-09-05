@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site\Auth;
 
+use App\Country;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -52,6 +53,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
+            'gender' => ['required'],
+            'age' => ['required', 'numeric'],
             'mobile' => ['required', 'string','between:9,15'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -74,6 +77,8 @@ class RegisterController extends Controller
         $user =  User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
+            'gender' => $data['gender'],
+            'age' => $data['age'],
             'mobile' => $data['mobile'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -99,6 +104,8 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('site.auth.register');
+        $countries = Country::all();
+
+        return view('site.auth.register',compact('countries'));
     }
 }

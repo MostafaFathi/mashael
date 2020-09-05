@@ -15,13 +15,24 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password', 'firstname', 'lastname','mobile', 'notes', 'ip', 'status','country','city','address','birthday','post_code'
+        'email', 'password', 'firstname', 'lastname', 'gender', 'age', 'mobile', 'notes', 'ip', 'status', 'country', 'city', 'address', 'birthday', 'post_code'
     ];
 
-
+    protected $appends = ['gender_name'];
     function getNameAttribute()
     {
         return ucfirst($this->firstname) . ' ' . ucfirst($this->lastname);
+    }
+    function getGenderNameAttribute()
+    {
+        if ($this->gender == 'm') {
+            return 'ذكر';
+        } else if ($this->gender == 'f') {
+            return 'أنثى';
+        } else {
+            return '--';
+        }
+
     }
 
     /**
