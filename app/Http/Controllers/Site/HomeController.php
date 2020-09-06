@@ -318,6 +318,12 @@ class HomeController extends Controller
         $user = auth()->user();
         return view('site.profileQuestion', ['user' => $user]);
     }
+    public function askMashael()
+    {
+        $questions = Question::all();
+        $user = auth()->user();
+        return view('site.askMashael', ['user' => $user,'questions'=>$questions]);
+    }
 
     public function addQuestion()
     {

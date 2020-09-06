@@ -71,7 +71,7 @@
                         <a class="nav-link" href="{{route('site::courses')}}">الدورات</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('site::profile.addQuestion')}}"> اسأل مشاعل</a>
+                        <a class="nav-link" href="{{route('site::profile.askMashael')}}"> اسأل مشاعل</a>
                     </li>
                     <li class="center-brand">
                         <a href="{{route('site::home')}}"><img
@@ -86,7 +86,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('site::contactus')}}">اتصل بنا</a>
                     </li>
-
                     @if(auth()->check())
                         <li class="nav-item register prof">
                             <a class="nav-link" href="{{route('site::profile')}}">أهلاً, {{auth()->user()->name}}</a>
@@ -108,6 +107,14 @@
                         <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
                     </li>
                 </ul>
+				<div class="dropdown">
+				  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    المزيد
+				  </button>
+				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				    <a class="dropdown-item" href="#">صفحة جديدة</a>
+				  </div>
+				</div>
             </div>
         </nav>
 
@@ -144,6 +151,12 @@
 
             </div>
 
+        </div>
+
+        <div class="links-footer float-right">
+			<ul>
+			  <li><a href="#">صفحة بالفوتر</a></li>
+			</ul>
         </div>
 
         <div class="brand-footer">
