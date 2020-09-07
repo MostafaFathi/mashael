@@ -69,30 +69,25 @@
 
                             <div class="col-lg-4">
                                 <div class="join-course">
-
                                     <span>{!! $workshop->price > 0 ? intval($workshop->price) . " <span class='font-def'>ريال</span>" : " <span class='font-def'>مجانا</span>" !!}</span>
-                                    @if($workshop->register_status == 0)
-                                    <a href="#" class="disabled">قريبا</a>
+                                    @if($workshop->type_id == 3)
+                                        <a href="#" class="disabled">قريبا</a>
+                                    @elseif(auth()->check() and in_array($workshop->id,auth()->user()->workshops->pluck('id')->toArray()))
+                                        <a class="disabled" href="#"><i class="fas fa-check-circle"></i> أنت
+                                            مشترك
+                                        </a>
+                                    @elseif($workshop->type_id == 2)
+                                        <a href="#" class="disabled">انتهى التسجيل</a>
                                     @else
                                         @if($workshop->persons != 0 and $workshop->persons <= $workshop->orders->count())
-                                            @if( !auth()->check() or !in_array($workshop->id,auth()->user()->workshops->pluck('id')->toArray()))
-                                                <a href="#" class="disabled">انتهى التسجيل</a>
-                                            @else
-                                                <a class="disabled" href="#"><i class="fas fa-check-circle"></i> أنت
-                                                    مشترك
-                                                </a>
-                                            @endif
+                                            <a href="#" class="disabled">انتهى التسجيل</a>
                                         @else
-                                            @if( !auth()->check() or !in_array($workshop->id,auth()->user()->workshops->pluck('id')->toArray()))
-                                                <a href="{{route('site::workshop_order',$workshop->id)}}">الإشتراك بورشة
-                                                    العمل</a>
-                                            @else
-                                                <a class="disabled" href="#"><i class="fas fa-check-circle"></i> أنت
-                                                    مشترك
-                                                </a>
-                                            @endif
+                                            <a href="{{route('site::workshop_order',$workshop->id)}}">الإشتراك بورشة
+                                                العمل</a>
                                         @endif
                                     @endif
+
+
                                 </div>
                             </div>
 
@@ -108,29 +103,24 @@
                             <div class="offset-lg-8 col-lg-4">
                                 <div class="join-course">
                                     <span>{!! $workshop->price > 0 ? intval($workshop->price) . " <span class='font-def'>ريال</span>" : " <span class='font-def'>مجانا</span>" !!}</span>
-                                    @if($workshop->register_status == 0)
+                                    @if($workshop->type_id == 3)
                                         <a href="#" class="disabled">قريبا</a>
+                                    @elseif(auth()->check() and in_array($workshop->id,auth()->user()->workshops->pluck('id')->toArray()))
+                                        <a class="disabled" href="#"><i class="fas fa-check-circle"></i> أنت
+                                            مشترك
+                                        </a>
+                                    @elseif($workshop->type_id == 2)
+                                        <a href="#" class="disabled">انتهى التسجيل</a>
                                     @else
                                         @if($workshop->persons != 0 and $workshop->persons <= $workshop->orders->count())
-
-                                            @if( !auth()->check() or !in_array($workshop->id,auth()->user()->workshops->pluck('id')->toArray()))
-                                                <a href="#" class="disabled">انتهى التسجيل</a>
-                                            @else
-                                                <a class="disabled" href="#"><i class="fas fa-check-circle"></i> أنت
-                                                    مشترك
-                                                </a>
-                                            @endif
+                                            <a href="#" class="disabled">انتهى التسجيل</a>
                                         @else
-                                            @if( !auth()->check() or !in_array($workshop->id,auth()->user()->workshops->pluck('id')->toArray()))
-                                                <a href="{{route('site::workshop_order',$workshop->id)}}">الإشتراك بورشة
-                                                    العمل</a>
-                                            @else
-                                                <a class="disabled" href="#"><i class="fas fa-check-circle"></i> أنت
-                                                    مشترك
-                                                </a>
-                                            @endif
+                                            <a href="{{route('site::workshop_order',$workshop->id)}}">الإشتراك بورشة
+                                                العمل</a>
                                         @endif
                                     @endif
+
+
                                 </div>
                             </div>
 

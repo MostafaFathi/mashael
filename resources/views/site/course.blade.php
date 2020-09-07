@@ -73,26 +73,20 @@
                             <div class="col-lg-4">
                                 <div class="join-course">
                                     <span>{!! $course->price > 0 ? intval($course->price) . " <span class='font-def'>ريال</span>" : " <span class='font-def'>مجانا</span>" !!}</span>
-                                    @if($course->register_status == 0)
+                                    @if($course->type_id == 3)
                                         <a href="#" class="disabled">قريبا</a>
+                                    @elseif(auth()->check() and in_array($course->id,auth()->user()->courses->pluck('id')->toArray()))
+                                        <a class="disabled" href="#"><i class="fas fa-check-circle"></i> أنت
+                                            مشترك
+                                        </a>
+                                    @elseif($course->type_id == 2)
+                                        <a href="#" class="disabled">انتهى التسجيل</a>
                                     @else
                                         @if($course->persons != 0 and $course->persons <= $course->orders->count())
-                                            @if( !auth()->check() or !in_array($course->id,auth()->user()->courses->pluck('id')->toArray()))
-                                                <a href="#" class="disabled">انتهى التسجيل</a>
-                                            @else
-                                                <a class="disabled" href="#"><i class="fas fa-check-circle"></i> أنت
-                                                    مشترك
-                                                </a>
-                                            @endif
+                                            <a href="#" class="disabled">انتهى التسجيل</a>
                                         @else
-                                            @if( !auth()->check() or !in_array($course->id,auth()->user()->courses->pluck('id')->toArray()))
-                                                <a href="{{route('site::course_order',$course->id)}}">الإشتراك
-                                                    بالدورة</a>
-                                            @else
-                                                <a class="disabled" href="#"><i class="fas fa-check-circle"></i> أنت
-                                                    مشترك
-                                                </a>
-                                            @endif
+                                            <a href="{{route('site::course_order',$course->id)}}">الإشتراك
+                                                بالدورة</a>
                                         @endif
                                     @endif
                                 </div>
@@ -110,27 +104,20 @@
                             <div class="offset-lg-8 col-lg-4">
                                 <div class="join-course">
                                     <span>{!! $course->price > 0 ? intval($course->price) . " <span class='font-def'>ريال</span>" : " <span class='font-def'>مجانا</span>" !!}</span>
-                                    @if($course->register_status == 0)
+                                    @if($course->type_id == 3)
                                         <a href="#" class="disabled">قريبا</a>
+                                    @elseif(auth()->check() and in_array($course->id,auth()->user()->courses->pluck('id')->toArray()))
+                                        <a class="disabled" href="#"><i class="fas fa-check-circle"></i> أنت
+                                            مشترك
+                                        </a>
+                                    @elseif($course->type_id == 2)
+                                        <a href="#" class="disabled">انتهى التسجيل</a>
                                     @else
-
                                         @if($course->persons != 0 and $course->persons <= $course->orders->count())
-                                            @if( !auth()->check() or !in_array($course->id,auth()->user()->courses->pluck('id')->toArray()))
-                                                <a href="#" class="disabled">انتهى التسجيل</a>
-                                            @else
-                                                <a class="disabled" href="#"><i class="fas fa-check-circle"></i> أنت
-                                                    مشترك
-                                                </a>
-                                            @endif
+                                            <a href="#" class="disabled">انتهى التسجيل</a>
                                         @else
-                                            @if( !auth()->check() or !in_array($course->id,auth()->user()->courses->pluck('id')->toArray()))
-                                                <a href="{{route('site::course_order',$course->id)}}">الإشتراك
-                                                    بالدورة</a>
-                                            @else
-                                                <a class="disabled" href="#"><i class="fas fa-check-circle"></i> أنت
-                                                    مشترك
-                                                </a>
-                                            @endif
+                                            <a href="{{route('site::course_order',$course->id)}}">الإشتراك
+                                                بالدورة</a>
                                         @endif
                                     @endif
                                 </div>
@@ -164,7 +151,7 @@
                             <div class="description">
                                 @if($course->intro_image)
 
-                                    <img class="intro_image" src="{{$workshop->intro_image}}">
+                                    <img class="intro_image" src="{{$course->intro_image}}">
 
                                 @endif
 
