@@ -47,16 +47,18 @@ class PageController extends Controller
         ]);
 
         $page = new Page();
+        $slug = Str::slug($request->name);
         $page->name = $request->name;
-        $page->slug = Str::slug($request->name);
+        $page->slug = $slug;
         $page->description = $request->description;
         if($request->file('image')){
             $page->image = $request->file('image')->store('pages');
         }
-
-        $page->url = $request->url;
+        $page->location = $request->location;
+        $page->url = url('/').'page/';
         $page->save();
-
+        $page->url = url('/').'/page/'.$page->id;
+        $page->save();
         return redirect()->route('admin::page.index')->with("success","created");
     }
 
@@ -103,7 +105,7 @@ class PageController extends Controller
         if($request->file('image')){
             $page->image = $request->file('image')->store('pages');
         }
-
+        $page->location = $request->location;
         $page->url = $request->url;
         $page->save();
 
@@ -118,7 +120,7 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        //$page->delete();
+        $page->delete();
         return redirect()->route('admin::page.index')->with("success","Deleted");
     }
 }

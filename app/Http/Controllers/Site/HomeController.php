@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Category;
+use App\CommonQuestion;
 use App\Contact;
 use App\Course;
 use App\Email;
@@ -256,7 +257,7 @@ class HomeController extends Controller
 
     public function page($id)
     {
-        $page = Page::where('id',$id)->orWhere('slug',$id)->first();
+        $page = Page::find($id);
         return view('site.page', ['page' => $page]);
     }
 
@@ -323,6 +324,12 @@ class HomeController extends Controller
         $questions = Question::all();
         $user = auth()->user();
         return view('site.askMashael', ['user' => $user,'questions'=>$questions]);
+    }
+    public function commonQuestions()
+    {
+        $questions = CommonQuestion::all();
+        $user = auth()->user();
+        return view('site.commonQuestions', ['user' => $user,'questions'=>$questions]);
     }
 
     public function addQuestion()

@@ -56,6 +56,7 @@ Route::group(['namespace' => 'Admin' , 'prefix' => config('app.admin_prefix') ,'
         Route::post('contact/reading/{id}', 'OrderController@reading')->name('contact.reading');
         Route::post('contact/cancel/{id}', 'OrderController@cancel')->name('contact.cancel');
         Route::resource('question', 'QuestionController');
+        Route::resource('common', 'CommonQuestionController');
         Route::resource('answer', 'AnswerController');
 //        Route::resource('certificate', 'CertificateController');
         Route::resource('transaction', 'TransactionController');
@@ -98,6 +99,7 @@ Route::group(['namespace' => 'Site' ,'as' => 'site::' ], function () {
         Route::get('/profile/course', 'HomeController@profileCourse')->name('profile.course');
         Route::get('/profile/question', 'HomeController@profileQuestions')->name('profile.question');
         Route::get('/profile/askMashael', 'HomeController@askMashael')->name('profile.askMashael');
+        Route::get('/questions/common', 'HomeController@commonQuestions')->name('questions.common');
         Route::get('/profile/addQuestion', 'HomeController@addQuestion')->name('profile.addQuestion');
         Route::post('/profile/addQuestion', 'HomeController@postQuestion');
     });

@@ -10,15 +10,15 @@
 
             <div class="card-body">
 
-                <a class="btn btn-info d-none d-lg-block m-l-15 pull-left" href="{{route('admin::page.create')}}"> <i class="fa fa-plus-circle"></i> {{__('Add new')}}</a>
+                 <a class="btn btn-info  d-lg-block m-l-15 pull-left" href="{{route('admin::common.create')}}"> <i class="fa fa-plus-circle"></i> {{__('Add Common Question')}}</a>
 
-                <h4 class="card-title">{{__('Pages')}}</h4>
+                <h4 class="card-title">{{__('Common Question')}}</h4>
 
-                <h6 class="card-subtitle"> {{__('Pages descriptions')}} </h6>
+                <h6 class="card-subtitle"> {{__('Question descriptions')}} </h6>
 
                     <div class="panel-body">
 
-                        @if( $pages )
+                        @if( $questions )
 
                         <table class="table table-hover" >
 
@@ -28,13 +28,9 @@
 
                                     <th>#</th>
 
-                                    <th>{{__('Name')}}</th>
-                                    <th>{{__('url')}}</th>
+                                    <th>{{__('title')}}</th>
+                                    <th>{{__('Description')}}</th>
 
-                                    <th>{{__('Image')}}</th>
-
-
-                                    <th></th>
 
                                 </tr>
 
@@ -42,26 +38,18 @@
 
                             <tbody class="m-datatable__body" style="">
 
-        						@foreach( $pages as $page )
+        						@foreach( $questions as $question )
 
                                 <tr>
 
-                                    <th scope="row">{{ $page->id }}</th>
-
-                                    <td>{{ $page->name }}</td>
-                                    <td>{{  url('/').'/page/'.$page->id }}</td>
-
-                                    <td>
-                                        @if($page->image)
-                                            <img width="40" src="{{ url('storage/app/'.$page->image) }}" />
-                                        @endif
-                                    </td>
-
+                                    <th scope="row">{{ $question->id }}</th>
+                                    <td>{{ $question->name }}</td>
+                                    <td>{!! $question->answer !!}</td>
                                     <td style="width: 180px;">
 
-                                        <a href="{{ route('admin::page.edit' , $page->id ) }}" class="btn btn-xs btn-info" title="Edit details"><i class="fa fa-edit"></i> {{__('Edit')}}</a>
+                                        <a href="{{ route('admin::common.edit' , $question ) }}" class="btn btn-xs btn-info" title="Edit details"><i class="fa fa-edit"></i> {{__('Edit')}}</a>
 
-                                        <form action="{{ route('admin::page.destroy' ,$page->id ) }}" method="post" class="Delete" style="display: inline-block;" >
+                                        <form action="{{ route('admin::common.destroy' ,$question->id ) }}" method="post" class="Delete" style="display: inline-block;" >
 
                                             {{ csrf_field() }}
 
@@ -84,7 +72,7 @@
 
 
 
-                        {{ $pages->appends(request()->input())->links() }}
+                        {{ $questions->appends(request()->input())->links() }}
 
 
 

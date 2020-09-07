@@ -93,8 +93,34 @@
 
                         </div>
 
+                        <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
 
-                        <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
+                            <label for="location" class="col-md-4 control-label">{{__('Location')}}</label>
+
+                            <div class="col-md-12">
+
+                                <select id="location"  class="form-control" name="location">
+                                    <option value="">غير محدد</option>
+                                    <option value="Header">Header</option>
+                                    <option value="Footer">Footer</option>
+                                </select>
+
+                                @if ($errors->has('location'))
+
+                                    <span class="help-block">
+
+                                        <strong>{{ $errors->first('location') }}</strong>
+
+                                    </span>
+
+                                @endif
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-none form-group{{ $errors->has('url') ? ' has-error' : '' }}">
 
                             <label for="url" class="col-md-4 control-label">{{__('Url')}}</label>
 

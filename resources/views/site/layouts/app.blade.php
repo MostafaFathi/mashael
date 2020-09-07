@@ -73,6 +73,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('site::profile.askMashael')}}"> اسأل مشاعل</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('site::questions.common')}}"> الاسئلة الشائعة</a>
+                    </li>
                     <li class="center-brand">
                         <a href="{{route('site::home')}}"><img
                                 src="{{url('storage/app').'/'.\App\Setting::getValue('logo')}}"></a>
@@ -107,14 +110,19 @@
                         <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
                     </li>
                 </ul>
-				<div class="dropdown">
-				  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    المزيد
-				  </button>
-				  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				    <a class="dropdown-item" href="#">صفحة جديدة</a>
-				  </div>
-				</div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        المزيد
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @foreach(config('allPages') as $page)
+                            @if($page->location == 'Header')
+                                <a class="dropdown-item" href="{{  url('/').'/page/'.$page->id }}">{{$page->name}}</a>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </nav>
 
@@ -154,9 +162,13 @@
         </div>
 
         <div class="links-footer float-right">
-			<ul>
-			  <li><a href="#">صفحة بالفوتر</a></li>
-			</ul>
+            <ul>
+                @foreach(config('allPages') as $page)
+                    @if($page->location == 'Footer')
+                        <li><a class="dropdown-item" href="{{  url('/').'/page/'.$page->id }}">{{$page->name}}</a></li>
+                    @endif
+                @endforeach
+            </ul>
         </div>
 
         <div class="brand-footer">
@@ -497,7 +509,7 @@
                     if (data.data.length > 0) {
                         html += ' <div class="sessionsList"><h3>اختر جلسة</h3><ul >';
                         $.each(data.data, function (k, v) {
-                            html += '<li><a href="{{url('session')}}/' + v.id + '/order?id='+data.id+'&date=' + data.date + '"><i class="fas fa-clipboard-check"></i> ' + v.name + ' </a></li>';
+                            html += '<li><a href="{{url('session')}}/' + v.id + '/order?id=' + data.id + '&date=' + data.date + '"><i class="fas fa-clipboard-check"></i> ' + v.name + ' </a></li>';
                         })
                         html += '</ul></div>';
                     } else {

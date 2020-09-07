@@ -64,6 +64,10 @@
             <a class="nav-link" href="{{ route('admin::question.index') }}"><i
                     class="fa fa-question-circle"></i> {{__('Questions')}}</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin::common.index') }}"><i
+                    class="fa fa-question-circle"></i> {{__('Common Question')}}</a>
+        </li>
 {{--        <li class="nav-item">--}}
 {{--            <a class="nav-link" href="{{ route('admin::certificate.index') }}"><i--}}
 {{--                    class="fa fa-id-card-o"></i> {{__('Certificates')}}</a>--}}
