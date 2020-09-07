@@ -197,68 +197,68 @@
             </div>
         </div>
     </section>
-{{--    <section class="know-more">--}}
+    <section class="know-more">
 
-{{--        <div class="container">--}}
+        <div class="container">
 
-{{--            <h2>اعرف المزيد عن الذي نقدمه</h2>--}}
+            <h2>اعرف المزيد عن الذي نقدمه</h2>
 
-{{--            <h5>الحلول والتخطيط المثالي لمن يريد الوصول لأهدافه</h5>--}}
+            <h5>الحلول والتخطيط المثالي لمن يريد الوصول لأهدافه</h5>
 
-{{--            <div class="row">--}}
-{{--                --}}
-{{--                <div class="col-lg-4">--}}
+            <div class="row">
 
-{{--                    <div class="item-more">--}}
+                <div class="col-lg-4">
 
-{{--                        <img src="{{url('storage/app')}}/{{$pages['views']->image}}">--}}
+                    <div class="item-more">
 
-{{--                        <h3>{{$pages['views']->name}}</h3>--}}
+                        <img src="{{url('storage/app')}}/{{$pages['views']->image}}">
 
-{{--                        <p>{!!$pages['views']->description!!}</p>--}}
+                        <h3>{{$pages['views']->name}}</h3>
 
-{{--                        <a href="{{$pages['views']->url}}">استكشف المزيد</a>--}}
+                        <p>{!!$pages['views']->description!!}</p>
 
-{{--                    </div>--}}
+                        <a href="{{$pages['views']->url}}">استكشف المزيد</a>
 
-{{--                </div>--}}
+                    </div>
 
-{{--                <div class="col-lg-4">--}}
+                </div>
 
-{{--                    <div class="item-more">--}}
+                <div class="col-lg-4">
 
-{{--                        <img src="{{url('storage/app')}}/{{$pages['workshop']->image}}">--}}
+                    <div class="item-more">
 
-{{--                        <h3>{{$pages['workshop']->name}}</h3>--}}
+                        <img src="{{url('storage/app')}}/{{$pages['workshop']->image}}">
 
-{{--                        <p>{!!$pages['workshop']->description!!}</p>--}}
+                        <h3>{{$pages['workshop']->name}}</h3>
 
-{{--                        <a href="{{$pages['workshop']->url}}">استكشف المزيد</a>--}}
+                        <p>{!!$pages['workshop']->description!!}</p>
 
-{{--                    </div>--}}
+                        <a href="{{$pages['workshop']->url}}">استكشف المزيد</a>
 
-{{--                </div>--}}
-{{--                <div class="col-lg-4">--}}
+                    </div>
 
-{{--                    <div class="item-more">--}}
+                </div>
+                <div class="col-lg-4">
 
-{{--                            <img src="{{url('storage/app')}}/{{$pages['courses']->image}}">--}}
+                    <div class="item-more">
 
-{{--                        <h3>{{$pages['courses']->name}}</h3>--}}
+                            <img src="{{url('storage/app')}}/{{$pages['courses']->image}}">
 
-{{--                        <p>{!!$pages['courses']->description!!}</p>--}}
+                        <h3>{{$pages['courses']->name}}</h3>
 
-{{--                        <a href="{{$pages['courses']->url}}">استكشف المزيد</a>--}}
+                        <p>{!!$pages['courses']->description!!}</p>
 
-{{--                    </div>--}}
+                        <a href="{{$pages['courses']->url}}">استكشف المزيد</a>
 
-{{--                </div>--}}
+                    </div>
 
-{{--            </div>--}}
+                </div>
 
-{{--        </div>--}}
+            </div>
 
-{{--    </section>--}}
+        </div>
+
+    </section>
 
     <section class="about-us page-about">
 
@@ -305,54 +305,54 @@
         </div>
 
     </section>
-    <div class="counter-back">
+{{--    <div class="counter-back">--}}
 
-        <section class="container">
+{{--        <section class="container">--}}
 
-            <div class="counter">
+{{--            <div class="counter">--}}
 
-                <div class="row">
+{{--                <div class="row">--}}
 
-                    <div class="col-lg-3 col-sm-3 col-6">
+{{--                    <div class="col-lg-3 col-sm-3 col-6">--}}
 
-                        <div class="item-counter">
-                            <span>{{\App\Setting::getValue('Years_of_experience')}}</span>
-                            <h3>سنة خبرة</h3>
-                        </div>
+{{--                        <div class="item-counter">--}}
+{{--                            <span>{{\App\Setting::getValue('Years_of_experience')}}</span>--}}
+{{--                            <h3>سنة خبرة</h3>--}}
+{{--                        </div>--}}
 
-                    </div>
-                    <div class="col-lg-3 col-sm-3 col-6">
+{{--                    </div>--}}
+{{--                    <div class="col-lg-3 col-sm-3 col-6">--}}
 
-                        <div class="item-counter">
-                            <span>{{\App\Setting::getValue('Training_course')}}</span>
-                            <h3>دورة تدريبية</h3>
-                        </div>
+{{--                        <div class="item-counter">--}}
+{{--                            <span>{{\App\Setting::getValue('Training_course')}}</span>--}}
+{{--                            <h3>دورة تدريبية</h3>--}}
+{{--                        </div>--}}
 
-                    </div>
-                    <div class="col-lg-3 col-sm-3 col-6">
+{{--                    </div>--}}
+{{--                    <div class="col-lg-3 col-sm-3 col-6">--}}
 
-                        <div class="item-counter">
-                            <span>{{\App\Setting::getValue('Workshop')}}</span>
-                            <h3>ورشة عمل</h3>
-                        </div>
+{{--                        <div class="item-counter">--}}
+{{--                            <span>{{\App\Setting::getValue('Workshop')}}</span>--}}
+{{--                            <h3>ورشة عمل</h3>--}}
+{{--                        </div>--}}
 
-                    </div>
-                    <div class="col-lg-3 col-sm-3 col-6">
+{{--                    </div>--}}
+{{--                    <div class="col-lg-3 col-sm-3 col-6">--}}
 
-                        <div class="item-counter">
-                            <span>{{\App\Setting::getValue('Book_and_article')}}</span>
-                            <h3>كتاب ومقالة</h3>
-                        </div>
+{{--                        <div class="item-counter">--}}
+{{--                            <span>{{\App\Setting::getValue('Book_and_article')}}</span>--}}
+{{--                            <h3>كتاب ومقالة</h3>--}}
+{{--                        </div>--}}
 
-                    </div>
+{{--                    </div>--}}
 
-                </div>
+{{--                </div>--}}
 
-            </div>
+{{--            </div>--}}
 
-        </section>
+{{--        </section>--}}
 
-    </div>
+{{--    </div>--}}
     <section class="courses">
 
         <h3>الدورات و ورش العمل</h3>

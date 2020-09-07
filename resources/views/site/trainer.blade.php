@@ -19,7 +19,7 @@
                     </ol>
                 </nav>
             </div>
-            
+
         </div>
 
     </div>
@@ -55,16 +55,16 @@
 
                     </div>
 
-                    <div class="statistics ml-5 clearfix">
+{{--                    <div class="statistics ml-5 clearfix">--}}
 
-                        <ul>
-                            <li> <i>{{\App\Setting::getValue('Training_course')}}+</i> دورة </li>
-                            <li> <i>{{\App\Setting::getValue('Workshop')}}</i> ورشة عمل </li>
-                            <li> <i>{{\App\Setting::getValue('Book_and_article')}}</i> مقال </li>
-                            <li> <i>{{\App\Setting::getValue('clients')}}</i> عميل ومستمع </li>
-                        </ul>
+{{--                        <ul>--}}
+{{--                            <li> <i>{{\App\Setting::getValue('Training_course')}}+</i> دورة </li>--}}
+{{--                            <li> <i>{{\App\Setting::getValue('Workshop')}}</i> ورشة عمل </li>--}}
+{{--                            <li> <i>{{\App\Setting::getValue('Book_and_article')}}</i> مقال </li>--}}
+{{--                            <li> <i>{{\App\Setting::getValue('clients')}}</i> عميل ومستمع </li>--}}
+{{--                        </ul>--}}
 
-                    </div>
+{{--                    </div>--}}
 
                 </div>
 
@@ -85,42 +85,42 @@
             </div>
 
             <div class="clearfix"></div>
-            <div class="goals clearfix">
+{{--            <div class="goals clearfix">--}}
 
-                <h2>لماذا أعطي الدورات وورش العمل؟</h2>
+{{--                <h2>لماذا أعطي الدورات وورش العمل؟</h2>--}}
 
-                <div class="row">
-                    <div class="col-lg-4 col-sm-12">
+{{--                <div class="row">--}}
+{{--                    <div class="col-lg-4 col-sm-12">--}}
 
-                        <div class="goals-text">
-                            <img src="{{url('storage/app')}}/{{$page4->image}}">
-                            <h3>{{$page4->name}}</h3>
-                            {!! $page4->description !!}
-                        </div>
+{{--                        <div class="goals-text">--}}
+{{--                            <img src="{{url('storage/app')}}/{{$page4->image}}">--}}
+{{--                            <h3>{{$page4->name}}</h3>--}}
+{{--                            {!! $page4->description !!}--}}
+{{--                        </div>--}}
 
-                    </div>    
-                    <div class="col-lg-4 col-sm-12">
+{{--                    </div>    --}}
+{{--                    <div class="col-lg-4 col-sm-12">--}}
 
-                        <div class="goals-text">
-                            <img src="{{url('storage/app')}}/{{$page2->image}}">
-                            <h3>{{$page2->name}}</h3>
-                            {!! $page2->description !!}
-                        </div>
+{{--                        <div class="goals-text">--}}
+{{--                            <img src="{{url('storage/app')}}/{{$page2->image}}">--}}
+{{--                            <h3>{{$page2->name}}</h3>--}}
+{{--                            {!! $page2->description !!}--}}
+{{--                        </div>--}}
 
-                    </div>    
-                    <div class="col-lg-4 col-sm-12">
+{{--                    </div>    --}}
+{{--                    <div class="col-lg-4 col-sm-12">--}}
 
-                        <div class="goals-text">
-                            <img src="{{url('storage/app')}}/{{$page3->image}}">
-                            <h3>{{$page3->name}}</h3>
-                            {!! $page3->description !!}
-                        </div>
+{{--                        <div class="goals-text">--}}
+{{--                            <img src="{{url('storage/app')}}/{{$page3->image}}">--}}
+{{--                            <h3>{{$page3->name}}</h3>--}}
+{{--                            {!! $page3->description !!}--}}
+{{--                        </div>--}}
 
-                    </div>    
+{{--                    </div>    --}}
 
-                </div>
+{{--                </div>--}}
 
-            </div>
+{{--            </div>--}}
 
         </div>
 

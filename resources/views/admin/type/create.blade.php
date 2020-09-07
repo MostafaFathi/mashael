@@ -48,7 +48,7 @@
 
                             <div class="col-md-12">
 
-                                <textarea id="description" type="text" class="form-control" name="description" required>{{old('description')}}</textarea>
+                                <textarea id="description" type="text" class="form-control" name="description" >{{old('description')}}</textarea>
 
                                 @if ($errors->has('description'))
 

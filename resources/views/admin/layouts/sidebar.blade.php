@@ -20,10 +20,10 @@
             <a class="nav-link" href="{{ route('admin::trainer.index') }}"><i
                     class="fa fa-black-tie"></i> {{__('Trainers')}}</a>
         </li>
-{{--        <li class="nav-item">--}}
-{{--            <a class="nav-link" href="{{ route('admin::type.index') }}"><i--}}
-{{--                    class="fa fa-key"></i> {{__('Types')}}</a>--}}
-{{--        </li>--}}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin::type.index') }}"><i
+                    class="fa fa-key"></i> {{__('Types')}}</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('admin::course.index') }}"><i
                     class="fa fa-certificate"></i> {{__('Courses')}}</a>

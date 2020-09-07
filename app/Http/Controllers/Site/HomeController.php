@@ -30,9 +30,9 @@ class HomeController extends Controller
     {
         $categories = \App\Category::get();
         $pages['intro'] = Page::where('id', 1)->first();
-//        $pages['workshop'] = Page::where('id', 2)->first();
-//        $pages['courses'] = Page::where('id', 3)->first();
-//        $pages['views'] = Page::where('id', 4)->first();
+        $pages['workshop'] = Page::where('id', 2)->first();
+        $pages['courses'] = Page::where('id', 3)->first();
+        $pages['views'] = Page::where('id', 4)->first();
         $pages['about'] = Page::where('id', 5)->first();
         return view('site.home', ['categories' => $categories, 'pages' => $pages]);
     }
@@ -265,10 +265,10 @@ class HomeController extends Controller
     {
         $trainer = Trainer::where('id',1)->first();
         $page = Page::where('id',7)->first();
-        $page2 = Page::where('id',8)->first();
-        $page3 = Page::where('id',13)->first();
-        $page4 = Page::where('id',14)->first();
-        return view('site.trainer', ['trainer' => $trainer,'page' => $page,'page2' => $page2,'page3' => $page3,'page4' => $page4]);
+//        $page2 = Page::where('id',8)->first();
+//        $page3 = Page::where('id',13)->first();
+//        $page4 = Page::where('id',14)->first();
+        return view('site.trainer', ['trainer' => $trainer,'page' => $page/*,'page2' => $page2,'page3' => $page3,'page4' => $page4*/]);
     }
 
 
