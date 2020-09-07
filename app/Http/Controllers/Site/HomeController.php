@@ -30,9 +30,9 @@ class HomeController extends Controller
     {
         $categories = \App\Category::get();
         $pages['intro'] = Page::where('id', 1)->first();
-        $pages['workshop'] = Page::where('id', 2)->first();
-        $pages['courses'] = Page::where('id', 3)->first();
-        $pages['views'] = Page::where('id', 4)->first();
+//        $pages['workshop'] = Page::where('id', 2)->first();
+//        $pages['courses'] = Page::where('id', 3)->first();
+//        $pages['views'] = Page::where('id', 4)->first();
         $pages['about'] = Page::where('id', 5)->first();
         return view('site.home', ['categories' => $categories, 'pages' => $pages]);
     }

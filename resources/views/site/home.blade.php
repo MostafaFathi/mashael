@@ -197,68 +197,68 @@
             </div>
         </div>
     </section>
-    <section class="know-more">
+{{--    <section class="know-more">--}}
 
-        <div class="container">
+{{--        <div class="container">--}}
 
-            <h2>اعرف المزيد عن الذي نقدمه</h2>
+{{--            <h2>اعرف المزيد عن الذي نقدمه</h2>--}}
 
-            <h5>الحلول والتخطيط المثالي لمن يريد الوصول لأهدافه</h5>
+{{--            <h5>الحلول والتخطيط المثالي لمن يريد الوصول لأهدافه</h5>--}}
 
-            <div class="row">
-                
-                <div class="col-lg-4">
+{{--            <div class="row">--}}
+{{--                --}}
+{{--                <div class="col-lg-4">--}}
 
-                    <div class="item-more">
+{{--                    <div class="item-more">--}}
 
-                        <img src="{{url('storage/app')}}/{{$pages['views']->image}}">
+{{--                        <img src="{{url('storage/app')}}/{{$pages['views']->image}}">--}}
 
-                        <h3>{{$pages['views']->name}}</h3>
+{{--                        <h3>{{$pages['views']->name}}</h3>--}}
 
-                        <p>{!!$pages['views']->description!!}</p>
+{{--                        <p>{!!$pages['views']->description!!}</p>--}}
 
-                        <a href="{{$pages['views']->url}}">استكشف المزيد</a>
+{{--                        <a href="{{$pages['views']->url}}">استكشف المزيد</a>--}}
 
-                    </div>
+{{--                    </div>--}}
 
-                </div>
+{{--                </div>--}}
 
-                <div class="col-lg-4">
+{{--                <div class="col-lg-4">--}}
 
-                    <div class="item-more">
+{{--                    <div class="item-more">--}}
 
-                        <img src="{{url('storage/app')}}/{{$pages['workshop']->image}}">
+{{--                        <img src="{{url('storage/app')}}/{{$pages['workshop']->image}}">--}}
 
-                        <h3>{{$pages['workshop']->name}}</h3>
+{{--                        <h3>{{$pages['workshop']->name}}</h3>--}}
 
-                        <p>{!!$pages['workshop']->description!!}</p>
+{{--                        <p>{!!$pages['workshop']->description!!}</p>--}}
 
-                        <a href="{{$pages['workshop']->url}}">استكشف المزيد</a>
+{{--                        <a href="{{$pages['workshop']->url}}">استكشف المزيد</a>--}}
 
-                    </div>
+{{--                    </div>--}}
 
-                </div>
-                <div class="col-lg-4">
+{{--                </div>--}}
+{{--                <div class="col-lg-4">--}}
 
-                    <div class="item-more">
+{{--                    <div class="item-more">--}}
 
-                            <img src="{{url('storage/app')}}/{{$pages['courses']->image}}">
+{{--                            <img src="{{url('storage/app')}}/{{$pages['courses']->image}}">--}}
 
-                        <h3>{{$pages['courses']->name}}</h3>
+{{--                        <h3>{{$pages['courses']->name}}</h3>--}}
 
-                        <p>{!!$pages['courses']->description!!}</p>
+{{--                        <p>{!!$pages['courses']->description!!}</p>--}}
 
-                        <a href="{{$pages['courses']->url}}">استكشف المزيد</a>
+{{--                        <a href="{{$pages['courses']->url}}">استكشف المزيد</a>--}}
 
-                    </div>
+{{--                    </div>--}}
 
-                </div>
+{{--                </div>--}}
 
-            </div>
+{{--            </div>--}}
 
-        </div>
+{{--        </div>--}}
 
-    </section>
+{{--    </section>--}}
 
     <section class="about-us page-about">
 
