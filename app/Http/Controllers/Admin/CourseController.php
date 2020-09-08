@@ -53,18 +53,18 @@ class CourseController extends Controller
         $course->price2 = $request->price2 ? $request->price2 : 0;
         $course->date_time = $request->date_time ;
         $course->coordinates = $request->coordinates ;
-        $course->address = $request->address ;
+        $course->address = '--' ;
         $course->slider = $request->slider ;
         $course->persons = $request->persons ;
         $course->register_status = $request->register_status === null  ? 1 : 0 ;
         $course->intro = $request->intro;
         $course->intro_image = $request->intro_image;
 
-        if($request->file('image')){
+        if($request->file('image') and $request->file('image') != null){
             $course->image = $request->file('image')->store('courses');
         }
 
-        if($request->file('sliderImage')){
+        if($request->file('sliderImage') and $request->file('image') != null){
             $course->sliderImage = $request->file('sliderImage')->store('courses');
         }
         $course->save();
@@ -120,7 +120,7 @@ class CourseController extends Controller
         $course->price2 = $request->price2 ? $request->price2 : 0;
         $course->date_time = $request->date_time;
         $course->coordinates = $request->coordinates ;
-        $course->address = $request->address ;
+        $course->address = '--' ;
         $course->slider = $request->slider ;
         $course->persons = $request->persons ;
         $course->register_status = $request->register_status === null  ? 1 : 0 ;

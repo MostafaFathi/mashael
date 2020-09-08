@@ -134,7 +134,7 @@
                                 <div class="col-md-12">
 
                                     <input id="intro" type="text" class="form-control" name="intro"
-                                           value="{{$course->intro}}" required>
+                                           value="{{$course->intro}}" >
 
                                     @if ($errors->has('intro'))
 
@@ -156,7 +156,7 @@
                                 <div class="col-md-12">
 
                                     <input id="intro_image" type="text" class="form-control" name="intro_image"
-                                           value="{{$course->intro_image}}" required>
+                                           value="{{$course->intro_image}}" >
 
                                     @if ($errors->has('intro_image'))
 
@@ -321,7 +321,7 @@
                                 <div class="col-md-12">
 
                                     <input id="price2" type="text" class="form-control" name="price2"
-                                           value="{{$course->price2}}" required>
+                                           value="{{$course->price2}}" >
 
                                     @if ($errors->has('price2'))
 
@@ -386,14 +386,14 @@
                             </div>
 
 
-                            <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                            <div class="d-none form-group{{ $errors->has('address') ? ' has-error' : '' }}">
 
                                 <label for="address" class="col-md-4 control-label">{{__('Text location')}}</label>
 
                                 <div class="col-md-12">
 
                                     <input id="address" type="text" class="form-control" name="address"
-                                           value="{{$course->address}}" required>
+                                           value="{{$course->address}}" >
 
                                     @if ($errors->has('address'))
 
@@ -410,7 +410,7 @@
                             </div>
 
 
-                            <div id="map_canvas" class="maps" style="width:100%; height:300px;"></div>
+{{--                            <div id="map_canvas" class="maps" style="width:100%; height:300px;"></div>--}}
                             <input type="hidden" name="coordinates" id="coordinates">
 
 
