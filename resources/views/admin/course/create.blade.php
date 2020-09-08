@@ -55,7 +55,7 @@
 
                                 <div class="col-md-12">
 
-                                    <input id="sliderImage" type="file" class="form-control" name="sliderImage" required>
+                                    <input id="sliderImage" type="file" class="form-control" name="sliderImage" >
 
                                     @if ($errors->has('sliderImage'))
 
@@ -124,7 +124,7 @@
                                 <div class="col-md-12">
 
                                     <input id="intro" type="text" class="form-control" name="intro"
-                                           value="{{old('intro')}}" required>
+                                           value="{{old('intro')}}" >
 
                                     @if ($errors->has('intro'))
 
@@ -148,7 +148,7 @@
                                 <div class="col-md-12">
 
                                     <input id="intro_image" type="text" class="form-control" name="intro_image"
-                                           value="{{old('intro_image')}}" required>
+                                           value="{{old('intro_image')}}" >
 
                                     @if ($errors->has('intro_image'))
 
@@ -234,7 +234,7 @@
 
                                 <div class="col-md-12">
 
-                                    <input id="image" type="file" class="form-control" name="image" required>
+                                    <input id="image" type="file" class="form-control" name="image" >
 
                                     @if ($errors->has('image'))
 
@@ -308,7 +308,7 @@
                                 <div class="col-md-12">
 
                                     <input id="price2" type="text" class="form-control" name="price2"
-                                           value="{{old('price2')}}" required>
+                                           value="{{old('price2')}}" >
 
                                     @if ($errors->has('price2'))
 
@@ -369,14 +369,14 @@
 
                             </div>
 
-                            <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                            <div class="d-none form-group{{ $errors->has('address') ? ' has-error' : '' }}">
 
                                 <label for="address" class="col-md-4 control-label">{{__('Text Location')}}</label>
 
                                 <div class="col-md-12">
 
                                     <input id="address" type="text" class="form-control" name="address"
-                                           value="{{old('address')}}" required>
+                                           value="{{old('address')}}" >
 
                                     @if ($errors->has('address'))
 
@@ -392,7 +392,7 @@
 
                             </div>
 
-                            <div id="map_canvas" class="maps" style="width:100%; height:300px;"></div>
+{{--                            <div id="map_canvas" class="maps" style="width:100%; height:300px;"></div>--}}
                             <input type="hidden" name="coordinates" id="coordinates">
 
                             <div class="form-group{{ $errors->has('register_status') ? ' has-error' : '' }}">
