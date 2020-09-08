@@ -52,6 +52,7 @@ class CourseController extends Controller
         $course->price = $request->price ? $request->price : 0;
         $course->price2 = $request->price2 ? $request->price2 : 0;
         $course->date_time = $request->date_time ;
+        $course->date_time_to = $request->date_time_to ;
         $course->coordinates = $request->coordinates ;
         $course->address = '--' ;
         $course->slider = $request->slider ;
@@ -119,6 +120,7 @@ class CourseController extends Controller
         $course->price = $request->price ? $request->price : 0;
         $course->price2 = $request->price2 ? $request->price2 : 0;
         $course->date_time = $request->date_time;
+        $course->date_time_to = $request->date_time_to ;
         $course->coordinates = $request->coordinates ;
         $course->address = '--' ;
         $course->slider = $request->slider ;

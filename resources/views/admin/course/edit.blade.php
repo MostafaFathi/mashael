@@ -362,13 +362,13 @@
 
                             <div class="form-group{{ $errors->has('date_time') ? ' has-error' : '' }}">
 
-                                <label for="date_time" class="col-md-4 control-label">{{__('Date & time')}}</label>
+                                <label for="date_time" class="col-md-4 control-label">{{__('Date from')}}</label>
 
                                 <div class="col-md-12">
 
                                     <input id="date_time" type="text" class="form-control datetimepicker"
                                            name="date_time"
-                                           value="{{$course->date_time}}" placeholder="{{date("Y-m-d H:i:s")}}"
+                                           value="{{$course->date_time}}" placeholder="{{date("Y-m-d")}}"
                                            required>
 
                                     @if ($errors->has('date_time'))
@@ -376,6 +376,30 @@
                                         <span class="help-block">
 
                                         <strong>{{ $errors->first('date_time') }}</strong>
+
+                                    </span>
+
+                                    @endif
+
+                                </div>
+
+                            </div>
+                            <div class="form-group{{ $errors->has('date_time_to') ? ' has-error' : '' }}">
+
+                                <label for="date_time_to" class="col-md-4 control-label">{{__('Date to')}}</label>
+
+                                <div class="col-md-12">
+
+                                    <input id="date_time_to" type="text" class="form-control datetimepicker"
+                                           name="date_time_to"
+                                           value="{{$course->date_time_to}}" placeholder="{{date("Y-m-d")}}"
+                                           required>
+
+                                    @if ($errors->has('date_time_to'))
+
+                                        <span class="help-block">
+
+                                        <strong>{{ $errors->first('date_time_to') }}</strong>
 
                                     </span>
 
@@ -477,7 +501,7 @@
     <script type="text/javascript">
         $(function () {
             $('.datetimepicker').datetimepicker({
-                format: 'YYYY-MM-DD HH:mm:ss'
+                format: 'YYYY-MM-DD'
             });
         });
     </script>
