@@ -19,7 +19,7 @@
                     </ol>
                 </nav>
             </div>
-            
+
         </div>
 
     </div>
@@ -86,10 +86,7 @@
                             <div class="card">
                                 <img src="{{url('storage/app')}}/{{$course->image}}" class="card-img-top">
                                 <span class="date"><i>{{$course->date_time->format('d')}}</i>{{months($course->date_time->format('m'))}} </span>
-                                @if($course->type->id == 2)
-                                    <span class="online"><img width="13"
-                                                              src="{{url('storage/app')}}/{{$course->type ? $course->type->image : ""}}"><br>{{$course->type ? $course->type->name : ""}}</span>
-                                @endif
+
                                 <div class="card-body">
                                     <h5 class="card-title">{{$course->name}}</h5>
                                     <span class="time"><i
@@ -98,7 +95,7 @@
                                         <span class="time"><i
                                                 class="fas fa-map-marker-alt"></i> {{$course->address}}</span>
                                     @endif
-                                    <p class="card-text">{{ Str::limit( strip_tags($course->description) , 140 ) }}</p>
+                                    <p class="card-text">{!! Str::limit( strip_tags($course->description) , 140 ) !!}</p>
                                     <span class="price">@if($course->price > 0 ) {{intval($course->price)}} ريال @else
                                             مجانا @endif </span>
                                     @if(!auth()->check() or !in_array($course->id,auth()->user()->courses->pluck('course_id')->toArray()))

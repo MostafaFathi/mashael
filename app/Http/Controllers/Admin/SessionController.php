@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Session;
+use App\SessionType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,11 +24,12 @@ class SessionController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
-        return view('admin.session.create');
+        $sessionTypes = SessionType::all();
+        return view('admin.session.create',compact('sessionTypes'));
     }
 
     /**
@@ -76,7 +78,8 @@ class SessionController extends Controller
      */
     public function edit(Session $session)
     {
-        return view('admin.session.edit', ['session' => $session]);
+        $sessionTypes = SessionType::all();
+        return view('admin.session.edit', ['session' => $session,'sessionTypes'=>$sessionTypes]);
     }
 
     /**

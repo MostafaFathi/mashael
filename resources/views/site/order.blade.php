@@ -69,7 +69,7 @@
                                 <td data-title="الدورة المسجلة" class="numeric">
                                     <img src="{{url('mashael')}}/images/pay.png">
                                     <h3>{{$course->name}}</h3>
-                                    <p>{{ Str::limit( strip_tags($course->description) , 300 ) }}</p>
+                                    <p>{!! Str::limit( strip_tags($course->description) , 300 )  !!}</p>
                                 </td>
                                 <td data-title="السعر" class="numeric price"><span
                                         class="font-def">{!! $course->price ? intval($course->price) ."<span class='font-def'>ريال</span>" : "<span class='font-def'>مجانا</span>" !!}</span>
@@ -80,7 +80,7 @@
                                 <td data-title="الدورة المسجلة" class="numeric">
                                     <img src="{{url('mashael')}}/images/pay.png">
                                     <h3>{{$course->name}}</h3>
-                                    <p>{{ Str::limit( strip_tags($course->description) , 300 ) }}</p>
+                                    <p>{!! Str::limit( strip_tags($course->description) , 300 ) !!}</p>
                                 </td>
                                 <td data-title="السعر" class="numeric price"><span
                                         class="font-def">{!! $course->price2 ? intval($course->price2) ."<span class='font-def'>ريال</span>" : "<span class='font-def'>مجانا</span>" !!}</span>
