@@ -36,6 +36,7 @@ Route::group(['namespace' => 'Admin' , 'prefix' => config('app.admin_prefix') ,'
         Route::get('/', 'HomeController@index')->name('home');
         Route::get('/setting', 'HomeController@settings')->name('settings');
         Route::post('/setting', 'HomeController@settings_post');
+        Route::get('/sessions/check/intervals', 'SessionController@checkInterval')->name('sessions.check.intervals');
 
         Route::resource('administrator', 'AdministratorController');
         Route::resource('trainer', 'TrainerController');

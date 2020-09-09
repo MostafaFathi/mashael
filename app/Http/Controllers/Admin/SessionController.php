@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Session;
 use App\SessionType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 
 class SessionController extends Controller
@@ -29,9 +30,46 @@ class SessionController extends Controller
     public function create()
     {
         $sessionTypes = SessionType::all();
-        return view('admin.session.create',compact('sessionTypes'));
+        $timeInterval = ['12-1','1-2','2-3','3-4','4-5','5-6','6-7','7-8','8-9','9-10'];
+        return view('admin.session.create',compact('sessionTypes','timeInterval'));
     }
 
+    public function checkInterval()
+    {
+
+        $sessions = Session::wheredate('date_time',\request()->date)->get();
+        $timeInterval = ['12-1','1-2','2-3','3-4','4-5','5-6','6-7','7-8','8-9','9-10'];
+
+        foreach ($sessions as $session) {
+            foreach ($timeInterval as $key => $item) {
+                if(\request()->has('update')){
+                    $sessionItem = \request('session');
+                    if($session->interval_time == $item and  $sessionItem['interval_time'] != $session->interval_time){
+                        Arr::pull($timeInterval,$key);
+                    }
+                }else{
+                    if($session->interval_time == $item){
+                        Arr::pull($timeInterval,$key);
+                    }
+                }
+
+            }
+        }
+        $generatedOptions = '';
+        foreach ($timeInterval as $item) {
+            if(\request()->has('update')) {
+                $sessionItem = \request('session');
+                if($sessionItem['interval_time'] == $item){
+                    $generatedOptions.="<option selected value='$item'>$item</option>";
+                }else{
+                    $generatedOptions.="<option value='$item'>$item</option>";
+                }
+            }else{
+                $generatedOptions.="<option value='$item'>$item</option>";
+            }
+        }
+        echo json_encode($generatedOptions);
+}
     /**
      * Store a newly created resource in storage.
      *
@@ -43,13 +81,16 @@ class SessionController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:sessions|max:255',
         ]);
-
+        $sessionType = SessionType::find($request->session_type);
         $session = new Session();
         $session->name = $request->name;
         $session->trainer_id = $request->trainer_id;
         $session->description = $request->description;
-        $session->price = $request->price ? $request->price : 0;
+        $session->session_type = $request->session_type;
+        $session->price = $sessionType->price ?? 0;
         $session->date_time = $request->date_time ;
+        $session->interval_time = $request->interval_time ;
+        $session->coordinates = $request->coordinates ;
         $session->date_time_end = $request->date_time_end ;
         $session->contact_by = $request->contact_by ;
         $session->address = $request->address ;
@@ -79,7 +120,16 @@ class SessionController extends Controller
     public function edit(Session $session)
     {
         $sessionTypes = SessionType::all();
-        return view('admin.session.edit', ['session' => $session,'sessionTypes'=>$sessionTypes]);
+        $sessions = Session::wheredate('date_time',$session->date_time)->get();
+        $timeInterval = ['12-1','1-2','2-3','3-4','4-5','5-6','6-7','7-8','8-9','9-10'];
+        foreach ($sessions as $sessionItem) {
+            foreach ($timeInterval as $key => $item) {
+                if($sessionItem->interval_time == $item and $session->interval_time != $sessionItem->interval_time){
+                    Arr::pull($timeInterval,$key);
+                }
+            }
+        }
+        return view('admin.session.edit', ['session' => $session,'sessionTypes'=>$sessionTypes,'timeInterval'=>$timeInterval]);
     }
 
     /**
@@ -95,11 +145,15 @@ class SessionController extends Controller
             'name' => 'required|max:255|unique:sessions,'.$session->id,
 
         ]);
+        $sessionType = SessionType::find($request->session_type);
 
         $session->name = $request->name;
         $session->trainer_id = $request->trainer_id;
         $session->description = $request->description;
-        $session->price = $request->price ? $request->price : 0;
+        $session->session_type = $request->session_type;
+        $session->price = $sessionType->price ?? 0;
+        $session->interval_time = $request->interval_time ;
+        $session->coordinates = $request->coordinates ;
         $session->date_time = $request->date_time;
         $session->date_time_end = $request->date_time_end;
         $session->contact_by = $request->contact_by;

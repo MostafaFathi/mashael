@@ -70,7 +70,8 @@
 
                             </div>
 
-                            <div class="form-group{{ $errors->has('trainer_id') ? ' has-error' : '' }}" style="display: none">
+                            <div class="form-group{{ $errors->has('trainer_id') ? ' has-error' : '' }}"
+                                 style="display: none">
 
                                 <label for="trainer_id" class="col-md-4 control-label">{{__('Trainer')}}</label>
 
@@ -97,21 +98,25 @@
                                 </div>
 
                             </div>
+                            <div class="form-group{{ $errors->has('session_type') ? ' has-error' : '' }}">
 
-{{--                             <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-
-                                <label for="price" class="col-md-4 control-label">{{__('Price')}}</label>
+                                <label for="session_type" class="col-md-4 control-label">{{__('Type')}}</label>
 
                                 <div class="col-md-12">
 
-                                    <input id="price" type="text" class="form-control" name="price"
-                                           value="{{old('price')}}" required>
+                                    <select id="session_type" type="text" class="form-control session_type" name="session_type">
+                                        @foreach($sessionTypes as $type)
+                                            <option
+                                                value="{{$type->id}}" {{old('session_type') == $type->id ? "selected" : ""}}>
+                                                {{$type->id}} - {{$type->name}}</option>
+                                        @endforeach
+                                    </select>
 
-                                    @if ($errors->has('price'))
+                                    @if ($errors->has('session_type'))
 
                                         <span class="help-block">
 
-                                        <strong>{{ $errors->first('price') }}</strong>
+                                        <strong>{{ $errors->first('session_type') }}</strong>
 
                                     </span>
 
@@ -120,15 +125,15 @@
                                 </div>
 
                             </div>
- --}}
                             <div class="form-group{{ $errors->has('date_time') ? ' has-error' : '' }}">
 
-                                <label for="date_time" class="col-md-4 control-label">{{__('Date & time from')}}</label>
+                                <label for="date_time" class="col-md-4 control-label">{{__('Date')}}</label>
 
                                 <div class="col-md-12">
 
-                                    <input id="date_time" type="text" class="form-control datetimepicker" name="date_time"
-                                           value="{{old('date_time')}}" placeholder="{{date("Y-m-d H:i:s")}}" required>
+                                    <input id="date_time" type="text" class="form-control datetimepicker"
+                                           name="date_time"
+                                           value="{{old('date_time')}}" placeholder="{{date("Y-m-d")}}" required>
 
                                     @if ($errors->has('date_time'))
 
@@ -143,20 +148,21 @@
                                 </div>
 
                             </div>
-{{--                             <div class="form-group{{ $errors->has('date_time_end') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('interval_time') ? ' has-error' : '' }}">
 
-                                <label for="date_time_end" class="col-md-4 control-label">{{__('Date & time to')}}</label>
+                                <label for="interval_time" class="col-md-4 control-label">{{__('Interval')}}</label>
 
                                 <div class="col-md-12">
 
-                                    <input id="date_time_end" type="text" class="form-control datetimepicker" name="date_time_end"
-                                           value="{{old('date_time_end')}}" placeholder="{{date("Y-m-d H:i:s")}}" required>
+                                    <select id="interval_time" type="text" class="form-control" name="interval_time">
+                                        <option value="">إختر تاريخ</option>
+                                    </select>
 
-                                    @if ($errors->has('date_time_end'))
+                                    @if ($errors->has('interval_time'))
 
                                         <span class="help-block">
 
-                                        <strong>{{ $errors->first('date_time_end') }}</strong>
+                                        <strong>{{ $errors->first('interval_time') }}</strong>
 
                                     </span>
 
@@ -165,10 +171,58 @@
                                 </div>
 
                             </div>
- --}}
+
+                            {{--                             <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
+
+                                                            <label for="price" class="col-md-4 control-label">{{__('Price')}}</label>
+
+                                                            <div class="col-md-12">
+
+                                                                <input id="price" type="text" class="form-control" name="price"
+                                                                       value="{{old('price')}}" required>
+
+                                                                @if ($errors->has('price'))
+
+                                                                    <span class="help-block">
+
+                                                                    <strong>{{ $errors->first('price') }}</strong>
+
+                                                                </span>
+
+                                                                @endif
+
+                                                            </div>
+
+                                                        </div>
+                             --}}
+
+                            {{--                             <div class="form-group{{ $errors->has('date_time_end') ? ' has-error' : '' }}">
+
+                                                            <label for="date_time_end" class="col-md-4 control-label">{{__('Date & time to')}}</label>
+
+                                                            <div class="col-md-12">
+
+                                                                <input id="date_time_end" type="text" class="form-control datetimepicker" name="date_time_end"
+                                                                       value="{{old('date_time_end')}}" placeholder="{{date("Y-m-d H:i:s")}}" required>
+
+                                                                @if ($errors->has('date_time_end'))
+
+                                                                    <span class="help-block">
+
+                                                                    <strong>{{ $errors->first('date_time_end') }}</strong>
+
+                                                                </span>
+
+                                                                @endif
+
+                                                            </div>
+
+                                                        </div>
+                             --}}
                             <div class="form-group{{ $errors->has('contact_by') ? ' has-error' : '' }}">
 
-                                <label for="contact_by" class="col-md-4 control-label">{{__('Contact By')}} <span class="badge badge-danger">في حال كانت الجلسة أونلاين</span></label>
+                                <label for="contact_by" class="col-md-4 control-label">{{__('Contact By')}} <span
+                                        class="badge badge-danger">في حال كانت الجلسة أونلاين</span></label>
 
                                 <div class="col-md-12">
 
@@ -192,7 +246,8 @@
 
                             <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
 
-                                <label for="address" class="col-md-4 control-label">{{__('Address')}}  <span class="badge badge-danger">في حال كانت الجلسة حضوري</span></label>
+                                <label for="address" class="col-md-4 control-label">{{__('Address')}} <span
+                                        class="badge badge-danger">في حال كانت الجلسة حضوري</span></label>
 
                                 <div class="col-md-12">
 
@@ -212,15 +267,16 @@
                                 </div>
 
                             </div>
-
+                            <div id="map_canvas" class="maps" style="width:100%; height:300px;display: none"></div>
+                            <input type="hidden" name="coordinates" id="coordinates">
 
                             <div class="form-group">
 
-                                    <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary">
 
-                                        {{__('Save')}}
+                                    {{__('Save')}}
 
-                                    </button>
+                                </button>
 
 
                             </div>
@@ -246,8 +302,63 @@
     <script type="text/javascript">
         $(function () {
             $('.datetimepicker').datetimepicker({
-                format: 'YYYY-MM-DD HH:mm:ss'
+                format: 'YYYY-MM-DD'
+            });
+            $(".datetimepicker").on("dp.change", function (e) {
+
+                $.ajax({
+                    type: 'get',
+                    dataType: "json",
+                    url: '{{route('admin::sessions.check.intervals')}}',
+                    data: {'date':$('#date_time').val()},
+                    cache: "false",
+                    success: function(data) {
+                        $('#interval_time').html(data);
+                        console.log(data);
+
+                    },error:function(data){
+
+                    }
+
+                });
+                return false;
+            });
+            $(document).on('change','.session_type',function () {
+                if($(this).val() == 3 || $(this).val() == 4){
+                    $('#map_canvas').css('display','block');
+                }else{
+                    $('#map_canvas').css('display','none');
+                }
+                return false;
             });
         });
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&language=ar"></script>
+    <script type="text/javascript">
+        function initialize() {
+            var stockholm = new google.maps.LatLng{{\App\Setting::getValue('location') }};
+            var parliament = new google.maps.LatLng{{\App\Setting::getValue('location') }};
+            $("#coordinates").val(stockholm);
+            var mapOptions = {
+                zoom: 13,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                center: stockholm
+            };
+            map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: parliament
+            });
+            google.maps.event.addListener(marker, 'dragend', function () {
+                var pp = marker.getPosition();
+                $("#coordinates").val(pp).keyup();
+                map.setCenter(marker.getPosition());
+
+            });
+        }
+
+        initialize();
     </script>
 @endsection

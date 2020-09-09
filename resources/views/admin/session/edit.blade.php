@@ -100,6 +100,86 @@
                             </div>
 
                         </div>
+                        <div class="form-group{{ $errors->has('session_type') ? ' has-error' : '' }}">
+
+                            <label for="session_type" class="col-md-4 control-label">{{__('Type')}}</label>
+
+                            <div class="col-md-12">
+
+                                <select id="session_type" type="text" class="form-control session_type" name="session_type">
+                                    @foreach($sessionTypes as $type)
+                                        <option
+                                            value="{{$type->id}}" {{$session->session_type == $type->id ? "selected" : ""}}>
+                                            {{$type->id}} - {{$type->name}}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('session_type'))
+
+                                    <span class="help-block">
+
+                                        <strong>{{ $errors->first('session_type') }}</strong>
+
+                                    </span>
+
+                                @endif
+
+                            </div>
+
+                        </div>
+                        <div class="form-group{{ $errors->has('date_time') ? ' has-error' : '' }}">
+
+                            <label for="date_time" class="col-md-4 control-label">{{__('Date')}}</label>
+
+                            <div class="col-md-12">
+
+                                <input id="date_time" type="text" class="form-control datetimepicker"
+                                       name="date_time"
+                                       value="{{$session->date_time}}" placeholder="{{date("Y-m-d")}}"
+                                       required>
+
+                                @if ($errors->has('date_time'))
+
+                                    <span class="help-block">
+
+                                        <strong>{{ $errors->first('date_time') }}</strong>
+
+                                    </span>
+
+                                @endif
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group{{ $errors->has('interval_time') ? ' has-error' : '' }}">
+
+                            <label for="interval_time" class="col-md-4 control-label">{{__('Interval')}}</label>
+
+                            <div class="col-md-12">
+
+                                <select id="interval_time" type="text" class="form-control" name="interval_time">
+                                    @foreach($timeInterval as $item)
+                                        <option
+                                            value="{{$item}}" {{$session->interval_time == $item ? "selected" : ""}}>
+                                            {{$item}}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('interval_time'))
+
+                                    <span class="help-block">
+
+                                        <strong>{{ $errors->first('interval_time') }}</strong>
+
+                                    </span>
+
+                                @endif
+
+                            </div>
+
+                        </div>
 
 {{--                         <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
 
@@ -124,30 +204,6 @@
 
                         </div>
  --}}
-                        <div class="form-group{{ $errors->has('date_time') ? ' has-error' : '' }}">
-
-                            <label for="date_time" class="col-md-4 control-label">{{__('Date & time from')}}</label>
-
-                            <div class="col-md-12">
-
-                                <input id="date_time" type="text" class="form-control datetimepicker"
-                                       name="date_time"
-                                       value="{{$session->date_time}}" placeholder="{{date("Y-m-d H:i:s")}}"
-                                       required>
-
-                                @if ($errors->has('date_time'))
-
-                                    <span class="help-block">
-
-                                        <strong>{{ $errors->first('date_time') }}</strong>
-
-                                    </span>
-
-                                @endif
-
-                            </div>
-
-                        </div>
 
 {{--                         <div class="form-group{{ $errors->has('date_time_end') ? ' has-error' : '' }}">
 
@@ -223,6 +279,8 @@
                             </div>
 
                         </div>
+                        <div id="map_canvas" class="maps" style="width:100%; height:300px;{{$session->session_type == 1 || $session->session_type==2 ? 'display:none' : ''}}"></div>
+                        <input type="hidden" name="coordinates" id="coordinates">
 
                         <div class="form-group">
 
@@ -258,8 +316,63 @@
     <script type="text/javascript">
         $(function () {
             $('.datetimepicker').datetimepicker({
-                format: 'YYYY-MM-DD HH:mm:ss'
+                format: 'YYYY-MM-DD'
             });
         });
+        $(".datetimepicker").on("dp.change", function (e) {
+
+            $.ajax({
+                type: 'get',
+                dataType: "json",
+                url: '{{route('admin::sessions.check.intervals')}}',
+                data: {'date':$('#date_time').val(),'update':true,'session':@json($session)},
+                cache: "false",
+                success: function(data) {
+                    $('#interval_time').html(data);
+                    console.log(data);
+
+                },error:function(data){
+
+                }
+
+            });
+            return false;
+        });
+        $(document).on('change','.session_type',function () {
+            if($(this).val() == 3 || $(this).val() == 4){
+                $('#map_canvas').css('display','block');
+            }else{
+                $('#map_canvas').css('display','none');
+            }
+            return false;
+        });
     </script>
+     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&language=ar"></script>
+     <script type="text/javascript">
+         function initialize() {
+             var stockholm = new google.maps.LatLng{{$session->coordinates ? $session->coordinates : \App\Setting::getValue('location') }};
+             var parliament = new google.maps.LatLng{{$session->coordinates ? $session->coordinates : \App\Setting::getValue('location') }};
+             $("#coordinates").val(stockholm);
+             var mapOptions = {
+                 zoom: 13,
+                 mapTypeId: google.maps.MapTypeId.ROADMAP,
+                 center: stockholm
+             };
+             map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+             marker = new google.maps.Marker({
+                 map: map,
+                 draggable: true,
+                 animation: google.maps.Animation.DROP,
+                 position: parliament
+             });
+             google.maps.event.addListener(marker, 'dragend', function () {
+                 var pp = marker.getPosition();
+                 $("#coordinates").val(pp).keyup();
+                 map.setCenter(marker.getPosition());
+
+             });
+         }
+
+         initialize();
+     </script>
 @endsection
