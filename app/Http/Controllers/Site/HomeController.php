@@ -267,7 +267,13 @@ return $sessions;
 
     public function page($id)
     {
-        $page = Page::find($id);
+
+        if($id === 'terms'){
+            $page = Page::find(10);
+        }else{
+            $page = Page::find($id);
+        }
+
         return view('site.page', ['page' => $page]);
     }
 
