@@ -47,7 +47,11 @@
                                     <p class="det-session-text">{{ Str::limit( strip_tags($session->description) , 300 ) }}</p>
                                     <div class="det-session">
                                         <label>تاريخ الجلسة: </label>
-                                        <span>{{request('date') ?  request('date') : $session->date_time->format('Y-m-d')}}</span>
+                                        <span>{{$session->date_time->format('Y-m-d')}}</span>
+                                    </div>
+                                    <div class="det-session">
+                                        <label>الساعة: </label>
+                                        <span>{{$session->interval_time}}</span>
                                     </div>
 {{--                                    <div class="det-session">--}}
 {{--                                        <label>تبدأ الجلسة: </label>--}}
@@ -58,17 +62,23 @@
 {{--                                        <span>{{$session->date_time_end->format('H:i')}}</span>--}}
 {{--                                    </div>--}}
 
-                                    @if($session->contact_by != "online")
+                                    @if($session->session_type == 3 || $session->session_type == 4)
                                         <div class="det-session">
                                             <label>طريقة التواصل: </label>
                                             <span>حضوري</span>
                                         </div>
+
                                         @if($select->address)
                                             <div class="det-session">
                                                 <label>العنوان: </label>
                                                 <span>{{$select->address}}</span>
                                             </div>
                                         @endif
+                                        <div class="det-session">
+                                            <label>العنوان على الخريطة: </label>
+                                            <div class="gmap_canvas">
+                                                <div id="map_canvas" class="maps" style="width:50%; height:200px;"></div>
+                                            </div>                                        </div>
                                     @else
                                         <div class="det-session">
                                             <label>طريقة التواصل: </label>
@@ -345,6 +355,28 @@
             return false;
         })
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&language=ar"></script>
+    <script type="text/javascript">
+        function initialize() {
+            var stockholm = new google.maps.LatLng{{$session->coordinates}};
+            var parliament = new google.maps.LatLng{{$session->coordinates}};
+            $("#coordinates").val(stockholm);
+            var mapOptions = {
+                zoom: 13,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                center: stockholm
+            };
+            map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: false,
+                animation: google.maps.Animation.DROP,
+                position: parliament
+            });
 
+        }
+
+        initialize();
+    </script>
 @endsection
 

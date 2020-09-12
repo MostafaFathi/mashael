@@ -466,7 +466,7 @@
     $(function () {
 
         var events = [
-                @foreach(\App\Session::where('id','>',10)->where('date_time','>=',date('Y-m-d H:i:s'))->doesntHave('orders')->orderBy('id','DESC')->get() as $session)
+                @foreach(\App\Session::where('id','>',10)->wheredate('date_time','>=',date('Y-m-d'))->doesntHave('orders')->orderBy('id','DESC')->get() as $session)
             {
                 ID: '{{$session->id}}',
                 Title: "{{$session->name}}",
@@ -499,17 +499,18 @@
             $('#OrderSession').modal('show');
             $('#OrderSession .modal-body').html("الرجاء الانتظار...");
 
-            $.get("{{route('site::get_session')}}", {'id': $(this).attr('title') ? $(this).attr('title') : 0}, function (data) {
+            $.get("{{route('site::get_session')}}", {'date':$(this).attr('data-date'),'id': $(this).attr('title') ? $(this).attr('title') : 0}, function (data) {
                 // if (data.length == 1) {
                 //window.location.replace("{{url('session')}}/"+data[0].id +"/order");
                 // } else {
+                console.log(data);
                 var html = ` `;
 
                 if (data) {
-                    if (data.data.length > 0) {
+                    if (data.length > 0) {
                         html += ' <div class="sessionsList"><h3>اختر جلسة</h3><ul >';
-                        $.each(data.data, function (k, v) {
-                            html += '<li><a href="{{url('session')}}/' + v.id + '/order?id=' + data.id + '&date=' + data.date + '"><i class="fas fa-clipboard-check"></i> ' + v.name + ' </a></li>';
+                        $.each(data, function (k, v) {
+                            html += '<li><a href="{{url('session')}}/' + v.id + '/order?id=' + v.id + '&date=' + data.date + '"><i class="fas fa-clipboard-check"></i> ' +' الساعة ' +v.interval_time +': '+  v.session_type.name + ' </a></li>';
                         })
                         html += '</ul></div>';
                     } else {

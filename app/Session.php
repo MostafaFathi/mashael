@@ -34,6 +34,10 @@ class Session extends Model
     {
         return $this->belongsTo("App\Type");
     }
+    public function session_type()
+    {
+        return $this->belongsTo("App\SessionType",'session_type');
+    }
 
     public function rates()
     {

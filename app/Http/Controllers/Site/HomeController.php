@@ -19,6 +19,7 @@ use App\Trainer;
 use App\Transaction;
 use App\UserCourse;
 use App\Workshop;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -215,14 +216,18 @@ class HomeController extends Controller
 
     public function getSession()
     {
-        $session = Session::find(request('id'));
-        if($session) {
-            $id = Session::where('id' , '>' ,10)->whereDate('date_time', '=', $session->date_time->format('Y-m-d'))->doesntHave('orders')->get();
-            if($id) {
-                return [ 'id' => request('id'), 'date'=> $session->date_time->format('Y-m-d'),'data' => Session::where('id', '<', 10)->get()];
-            }
+        $date = Carbon::createFromTimestampMs(request('date'))->format('Y-m-d');
+        $sessions = Session::with('session_type')->where('id' , '>' ,10)->whereDate('date_time', '=', $date)->doesntHave('orders')->orderBy('interval_time','asc')->get();
+return $sessions;
+//        $session = Session::find(request('id'));
+//        if($session) {
+//            $id = Session::where('id' , '>' ,10)->whereDate('date_time', '=', $session->date_time->format('Y-m-d'))->doesntHave('orders')->get();
+//            if($id) {
+//                return [ 'id' => request('id'), 'date'=> $session->date_time->format('Y-m-d'),'data' => Session::where('id', '<', 10)->get()];
+//            }
+//
+//        }
 
-        }
 
         //return Session::get();
 
