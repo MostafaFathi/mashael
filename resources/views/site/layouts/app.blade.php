@@ -89,6 +89,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('site::contactus')}}">اتصل بنا</a>
                     </li>
+
+                  <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">المزيد</a>
+                    <div class="dropdown-menu">
+                        @foreach(config('allPages') as $page)
+                            @if($page->location == 'Header')
+                                <a class="dropdown-item" href="{{  url('/').'/page/'.$page->id }}">{{$page->name}}</a>
+                            @endif
+                        @endforeach
+                    </div>
+                  </li>
                     @if(auth()->check())
                         <li class="nav-item register prof">
                             <a class="nav-link" href="{{route('site::profile')}}">أهلاً, {{auth()->user()->name}}</a>
@@ -109,20 +120,20 @@
                     <li class="nav-item search">
                         <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
                     </li>
+{{--                     <li class="nav-item dropdown">
+                        <button class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            المزيد
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @foreach(config('allPages') as $page)
+                                @if($page->location == 'Header')
+                                    <a class="dropdown-item" href="{{  url('/').'/page/'.$page->id }}">{{$page->name}}</a>
+                                @endif
+                            @endforeach
+                        </div>
+                    </li> --}}
                 </ul>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        المزيد
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        @foreach(config('allPages') as $page)
-                            @if($page->location == 'Header')
-                                <a class="dropdown-item" href="{{  url('/').'/page/'.$page->id }}">{{$page->name}}</a>
-                            @endif
-                        @endforeach
-                    </div>
-                </div>
             </div>
         </nav>
 
@@ -161,11 +172,11 @@
 
         </div>
 
-        <div class="links-footer float-right">
+        <div class="links-footer float-left">
             <ul>
                 @foreach(config('allPages') as $page)
                     @if($page->location == 'Footer')
-                        <li><a class="dropdown-item" href="{{  url('/').'/page/'.$page->id }}">{{$page->name}}</a></li>
+                        <li><a href="{{  url('/').'/page/'.$page->id }}">{{$page->name}}</a></li>
                     @endif
                 @endforeach
             </ul>

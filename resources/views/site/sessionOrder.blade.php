@@ -74,11 +74,17 @@
                                                 <span>{{$select->address}}</span>
                                             </div>
                                         @endif
-                                        <div class="det-session">
+                                        <div class="det-session ">
                                             <label>العنوان على الخريطة: </label>
-                                            <div class="gmap_canvas">
-                                                <div id="map_canvas" class="maps" style="width:50%; height:200px;"></div>
-                                            </div>                                        </div>
+                                            <span class="google-map">
+                                                <iframe allowfullscreen="" frameborder="0"
+                                                        src="https://maps.google.com/maps?q={{$session->coordinates}}&hl=es&z=14&amp;output=embed"
+
+                                                        style="border:0"></iframe>
+                                            </span>
+{{--                                            <div class="gmap_canvas">--}}
+{{--                                                <div id="map_canvas" class="maps" style="width:50%; height:200px;"></div>--}}
+{{--                                            </div>                                        </div>--}}
                                     @else
                                         <div class="det-session">
                                             <label>طريقة التواصل: </label>

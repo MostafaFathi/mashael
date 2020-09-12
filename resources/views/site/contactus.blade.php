@@ -40,10 +40,11 @@
                         <p>{!!$page->description!!}</p>
 
                         <ul>
-                            <li><i class="fas fa-phone"></i> <span>{{ \App\Setting::getValue('phone') }}</span> </li>
-                            <li><i class="far fa-envelope"></i> <span>{{ \App\Setting::getValue('email') }}</span> </li>
-                            <li><i class="fas fa-fax"></i> <span>{{ \App\Setting::getValue('fax') }}</span> </li>
-                            <li><i class="fas fa-map-marker-alt"></i> <span>{{ \App\Setting::getValue('address') }}</span> </li>
+                            <li><i class="fas fa-phone"></i> <span>{{ \App\Setting::getValue('phone') }}</span></li>
+                            <li><i class="far fa-envelope"></i> <span>{{ \App\Setting::getValue('email') }}</span></li>
+                            <li><i class="fas fa-fax"></i> <span>{{ \App\Setting::getValue('fax') }}</span></li>
+                            <li><i class="fas fa-map-marker-alt"></i>
+                                <span>{{ \App\Setting::getValue('address') }}</span></li>
                         </ul>
 
                     </div>
@@ -61,29 +62,34 @@
                             {{csrf_field()}}
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="text" class="form-control"  name="first_name" placeholder="الإسم الأول" value="{{old('first_name')}}">
+                                    <input type="text" class="form-control" name="first_name" placeholder="الإسم الأول"
+                                           value="{{old('first_name')}}">
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control" name="last_name" placeholder="الإسم الأخير" value="{{old('last_name')}}">
+                                    <input type="text" class="form-control" name="last_name" placeholder="الإسم الأخير"
+                                           value="{{old('last_name')}}">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="email" class="form-control" name="email" placeholder="البريد الإلكتروني" value="{{old('email')}}">
+                                    <input type="email" class="form-control" name="email"
+                                           placeholder="البريد الإلكتروني" value="{{old('email')}}">
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control" name="title" placeholder="موضوع الرسالة" value="{{old('title')}}">
+                                    <input type="text" class="form-control" name="title" placeholder="موضوع الرسالة"
+                                           value="{{old('title')}}">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="col">
-                                    <textarea class="form-control" name="message" placeholder="نص الرسالة هنا">{{old('message')}}</textarea>
+                                    <textarea class="form-control" name="message"
+                                              placeholder="نص الرسالة هنا">{{old('message')}}</textarea>
                                 </div>
                             </div>
 
-                            <button type="submit" class="send">إرسال </button>
+                            <button type="submit" class="send">إرسال</button>
 
                         </form>
 
@@ -99,9 +105,13 @@
         <div class="map">
 
             <div class="mapouter">
-                <div class="gmap_canvas">
-                    <div id="map_canvas" class="maps" style="width:100%; height:370px;"></div>
-                </div>
+
+                 <span class="google-map" style="width:100%; height:370px;">
+                                                <iframe allowfullscreen="" frameborder="0"
+                                                        src="https://maps.google.com/maps?q={{\App\Setting::getValue('location')}}&hl=es&z=14&amp;output=embed"
+
+                                                        style="border:0;width:100%; height:370px;"></iframe>
+                                            </span>
             </div>
 
         </div>
