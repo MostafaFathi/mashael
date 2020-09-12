@@ -52,6 +52,7 @@ class WorkshopController extends Controller
         $workshop->price = $request->price ? $request->price : 0;
         $workshop->price2 = $request->price2 ? $request->price2 : 0;
         $workshop->date_time = $request->date_time ;
+        $workshop->date_time_to = $request->date_time_to ;
         $workshop->coordinates = $request->coordinates ;
         $workshop->address = $request->address ;
         $workshop->slider = $request->slider ;
@@ -119,6 +120,7 @@ class WorkshopController extends Controller
         $workshop->price = $request->price ? $request->price : 0;
         $workshop->price2 = $request->price2 ? $request->price2 : 0;
         $workshop->date_time = $request->date_time;
+        $workshop->date_time_to = $request->date_time_to;
         $workshop->coordinates = $request->coordinates ;
         $workshop->address = $request->address ;
         $workshop->slider = $request->slider ;

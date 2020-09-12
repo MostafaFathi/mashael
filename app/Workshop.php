@@ -8,7 +8,7 @@ class Workshop extends Model
 {
     protected $fillable = ['name', 'description', 'file', 'image', 'year', 'key_id'];
 
-    protected $dates = ['date_time','created_at', 'updated_at', 'deleted_at'];
+    protected $dates = ['date_time','date_time_to','created_at', 'updated_at', 'deleted_at'];
 
     public function reCategory($array = [])
     {

@@ -17,7 +17,7 @@
                     </ol>
                 </nav>
 
-           </div>
+            </div>
 
         </div>
 
@@ -80,7 +80,9 @@
                                         <a href="#" class="disabled">انتهى التسجيل</a>
                                     @else
                                         @if($workshop->persons != 0 and $workshop->persons <= $workshop->orders->count())
-                                            <a href="#" class="disabled">انتهى التسجيل</a>
+
+                                            {{--                                        @elseif(\Carbon\Carbon::parse($workshop->date_time_to)->format('Y-m-d') < \Carbon\Carbon::today()->format('Y-m-d'))--}}
+                                            {{--                                            <a href="#" class="disabled">انتهى التسجيل</a>--}}
                                         @else
                                             <a href="{{route('site::workshop_order',$workshop->id)}}">الإشتراك بورشة
                                                 العمل</a>
@@ -114,6 +116,8 @@
                                     @else
                                         @if($workshop->persons != 0 and $workshop->persons <= $workshop->orders->count())
                                             <a href="#" class="disabled">انتهى التسجيل</a>
+                                            {{--                                        @elseif(\Carbon\Carbon::parse($workshop->date_time_to)->format('Y-m-d') < \Carbon\Carbon::today()->format('Y-m-d'))--}}
+                                            {{--                                            <a href="#" class="disabled">انتهى التسجيل</a>--}}
                                         @else
                                             <a href="{{route('site::workshop_order',$workshop->id)}}">الإشتراك بورشة
                                                 العمل</a>
@@ -191,21 +195,32 @@
                         <div class="col-lg-4 line">
 
                             <div class="time-date">
-                                <h3 class="title-side">الوقت والتاريخ</h3>
+                                <h3 class="title-side">تاريخ البداية</h3>
                                 <span><i
                                         class="far fa-clock"></i> {{$workshop->date_time->format("H:i") }} {{period($workshop->date_time->format("A"))}}</span>
                                 <span><i
                                         class="far fa-calendar-alt"></i> {{$workshop->date_time->format("d")}}  {{months($workshop->date_time->format('m'))}}  {{$workshop->date_time->format('Y')}}</span>
                             </div>
-
+                            @isset($workshop->date_time_to)
+                                <div class="time-date">
+                                    <h3 class="title-side">تاريخ النهاية</h3>
+                                    <span><i
+                                            class="far fa-clock"></i> {{$workshop->date_time_to->format("H:i") }} {{period($workshop->date_time_to->format("A"))}}</span>
+                                    <span><i
+                                            class="far fa-calendar-alt"></i> {{$workshop->date_time_to->format("d")}}  {{months($workshop->date_time_to->format('m'))}}  {{$workshop->date_time->format('Y')}}</span>
+                                </div>
+                            @endisset
                             <div class="course-map">
 
                                 <h3 class="title-side">مكان الدورة</h3>
 
-                                <div class="course-place">
-                                    <div id="map_canvas" class="maps" style="width:100%; height:350px;"></div>
-                                </div>
 
+                                <span class="google-map" style="width:100%; height:350px;">
+                                                <iframe allowfullscreen="" frameborder="0"
+                                                        src="https://maps.google.com/maps?q={{$workshop->coordinates}}&hl=es&z=14&amp;output=embed"
+
+                                                        style="border:0;width:100%; height:350px;"></iframe>
+                                            </span>
                                 <h4><i class="fas fa-map-marker-alt"></i>{{$workshop->address}}</h4>
 
                             </div>
