@@ -151,7 +151,7 @@ class HomeController extends Controller
 
         Mail::send('emails.order', ['course' => $course,'order' => $order], function ($message) use ($order)
         {
-            $message->from('mashael@coachmashael.com', 'coach mashael');
+            $message->from('mashael.coach@gmail.com', 'coach mashael');
             $message->subject("coach mashael");
             $message->to($order->user->email);
         });
@@ -192,7 +192,7 @@ class HomeController extends Controller
 
         Mail::send('emails.orderWorkshop', ['workshop' => $workshop,'order' => $order], function ($message) use ($order)
         {
-            $message->from('mashael@coachmashael.com', 'coach mashael');
+            $message->from('mashael.coach@gmail.com', 'coach mashael');
             $message->to($order->user->email);
         });
 
@@ -252,8 +252,13 @@ return $sessions;
 
         Mail::send('emails.orderSession', ['session' => $session,'order' => $order], function ($message) use ($order)
         {
-            $message->from('mashael@coachmashael.com', 'coach mashael');
+            $message->from('mashael.coach@gmail.com', 'coach mashael');
             $message->to($order->user->email);
+        });
+        Mail::send('emails.orderSession', ['session' => $session,'order' => $order], function ($message) use ($order)
+        {
+            $message->from('mashael.coach@gmail.com', 'coach mashael');
+            $message->to('mashael.coach@gmail.com');
         });
 
         return redirect()->route('site::workshop', $id)->with('success', "تم الاشتراك بنجاح");
@@ -355,6 +360,11 @@ return $sessions;
         $question->question = request('question');
         $question->user_id = auth()->user()->id;
         $question->save();
+        Mail::send('emails.newQuestion', ['question' => $question], function ($message) use ($question)
+        {
+            $message->from('mashael.coach@gmail.com', 'coach mashael');
+            $message->to('mashael.coach@gmail.com');
+        });
         return redirect()->back()->with('success',"تم اضافة السؤال بنجاح");
     }
 
@@ -428,7 +438,7 @@ return $sessions;
 
             Mail::send('emails.orderSession', ['session' => $session,'order' => $order], function ($message) use ($order)
             {
-                $message->from('mashael@coachmashael.com', 'coach mashael');
+                $message->from('mashael.coach@gmail.com', 'coach mashael');
                 $message->to($order->user->email);
             });
 
@@ -446,7 +456,7 @@ return $sessions;
 
             Mail::send('emails.order', ['course' => $course,'order' => $order], function ($message) use ($order)
             {
-                $message->from('mashael@coachmashael.com', 'coach mashael');
+                $message->from('mashael.coach@gmail.com', 'coach mashael');
                 $message->to($order->user->email);
             });
 
@@ -466,7 +476,7 @@ return $sessions;
 
             Mail::send('emails.orderWorkshop', ['workshop' => $workshop,'order' => $order], function ($message) use ($order)
             {
-                $message->from('mashael@coachmashael.com', 'coach mashael');
+                $message->from('mashael.coach@gmail.com', 'coach mashael');
                 $message->to($order->user->email);
             });
 

@@ -92,7 +92,7 @@ class RegisterController extends Controller
 
         Mail::send('emails.register', ['user' => $user], function ($message) use ($user)
         {
-            $message->from('mashael@coachmashael.com', 'coach mashael');
+            $message->from('mashael.coach@gmail.com', 'coach mashael');
             $message->subject("coach mashael");
             $message->to($user->email);
         });

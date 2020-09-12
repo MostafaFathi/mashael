@@ -36,33 +36,11 @@ text-align: center;"
 <h2 style="color: #888888; font-size: 20px;margin: 0 0 20px 0;">Thanks For Subscription</h2>
 
 
-<p style="font-size: 20px;margin: 0 0 20px 0;font-weight: bold">
-    تم حجز جلسة بنجاح في موقع المدربة مشاعل العقيّل
+<p style="font-size: 20px;margin: 0 0 20px 0;">
+    تم اضافة سؤال في قسم أسأل مشاعل من قبل العضو <span style="font-weight: bold">{{$question->user->firstname}} {{$question->user->lastname}}</span>
 
 </p>
-<p style="font-size: 20px;margin: 0 0 20px 0;font-weight: bold">
-    تفاصيل الجلسة:
-</p>
 
-<p style="font-size: 16px;margin: 0 0 20px 0;">
-    نوع الجلسة : {{$session->session_type->name ?? ''}}
-</p>
-
-<p style="font-size: 16px;margin: 0 0 20px 0;">
-    وقت الجلسة : {{ $session->interval_time }}
-</p>
-
-<p style="font-size: 16px;margin: 0 0 20px 0;">
-    عنوان الجلسة: {{ $session->address }}
-
-</p>
-<p style="font-size: 16px;margin: 0 0 20px 0;">
-    بإمكانك الدخول إلى الصفحة الشخصية الخاصة بك من خلال الرابط
-</p>
-
-
-<a style="background: #caa95d; color: #fff;display: inline-block;width: 150px;padding: 5px 0 ;text-decoration: none;font-size: 20px;"
-   href="https://www.coachmashael.com/profile">الصفحة الشخصية</a>
 
 
 <span style="color: #888888; display: block;font-size: 18px;margin-top: 10px;">www.coachmashael.com</span>
