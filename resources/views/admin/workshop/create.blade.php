@@ -125,7 +125,7 @@
                                 <div class="col-md-12">
 
                                     <input id="intro" type="text" class="form-control" name="intro"
-                                           value="{{old('intro')}}" required>
+                                           value="{{old('intro')}}" >
 
                                     @if ($errors->has('intro'))
 
@@ -147,7 +147,7 @@
                                 <div class="col-md-12">
 
                                     <input id="intro_image" type="text" class="form-control" name="intro_image"
-                                           value="{{old('intro_image')}}" required>
+                                           value="{{old('intro_image')}}" >
 
                                     @if ($errors->has('intro_image'))
 
@@ -235,7 +235,7 @@
 
                                 <div class="col-md-12">
 
-                                    <input id="image" type="file" class="form-control" name="image" required>
+                                    <input id="image" type="file" class="form-control" name="image" >
 
                                     @if ($errors->has('image'))
 

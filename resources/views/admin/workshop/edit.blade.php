@@ -134,7 +134,7 @@
                                 <div class="col-md-12">
 
                                     <input id="intro" type="text" class="form-control" name="intro"
-                                           value="{{$workshop->intro}}" required>
+                                           value="{{$workshop->intro}}" >
 
                                     @if ($errors->has('intro'))
 
@@ -157,7 +157,7 @@
                                 <div class="col-md-12">
 
                                     <input id="intro_image" type="text" class="form-control" name="intro_image"
-                                           value="{{$workshop->intro_image}}" required>
+                                           value="{{$workshop->intro_image}}" >
 
                                     @if ($errors->has('intro_image'))
 
