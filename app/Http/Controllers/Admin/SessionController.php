@@ -60,12 +60,12 @@ class SessionController extends Controller
             if(\request()->has('update')) {
                 $sessionItem = \request('session');
                 if($sessionItem['interval_time'] == $item){
-                    $generatedOptions.="<option selected value='$item'>$item</option>";
+                    $generatedOptions.="<option selected value='$item'>$item مساءاً </option>";
                 }else{
-                    $generatedOptions.="<option value='$item'>$item</option>";
+                    $generatedOptions.="<option value='$item'>$item مساءاً </option>";
                 }
             }else{
-                $generatedOptions.="<option value='$item'>$item</option>";
+                $generatedOptions.="<option value='$item'>$item مساءاً </option>";
             }
         }
         echo json_encode($generatedOptions);

@@ -44,8 +44,8 @@
                                 <tr>
 
                                     <th scope="row">{{ $question->id }}</th>
-                                    <td>{{ $question->title }}</td>
-                                    <td>{{ $question->user->name }}</td>
+                                    <td>{{ $question->title ?? '' }}</td>
+                                    <td>{{ $question->user->name ?? '' }}</td>
                                     <td>{{ $question->answers->count() > 0 ? "تمت الاجاية" : ""  }}</td>
                                     <td style="width: 180px;">
 

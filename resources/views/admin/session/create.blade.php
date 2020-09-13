@@ -227,7 +227,7 @@
                                 <div class="col-md-12">
 
                                     <input id="contact_by" type="text" class="form-control" name="contact_by"
-                                           value="{{old('contact_by')}}" required>
+                                           value="{{old('contact_by')}}">
 
                                     @if ($errors->has('contact_by'))
 
@@ -252,7 +252,7 @@
                                 <div class="col-md-12">
 
                                     <input id="address" type="text" class="form-control" name="address"
-                                           value="{{old('address')}}" required>
+                                           value="{{old('address')}}">
 
                                     @if ($errors->has('address'))
 

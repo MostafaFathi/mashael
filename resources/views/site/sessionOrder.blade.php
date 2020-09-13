@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="det-session">
                                         <label>الساعة: </label>
-                                        <span>{{$session->interval_time}}</span>
+                                        <span>{{$session->interval_time}} مساءاً </span>
                                     </div>
 {{--                                    <div class="det-session">--}}
 {{--                                        <label>تبدأ الجلسة: </label>--}}
