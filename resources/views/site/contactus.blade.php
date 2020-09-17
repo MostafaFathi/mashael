@@ -125,6 +125,10 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&language=ar"></script>
     <script type="text/javascript">
+        $(document).on('click','.send',function(){
+            $(this).addClass('d-none');
+
+        });
         function initialize() {
             var stockholm = new google.maps.LatLng{{\App\Setting::getValue('location')}};
             var parliament = new google.maps.LatLng{{\App\Setting::getValue('location')}};

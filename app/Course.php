@@ -8,7 +8,7 @@ class Course extends Model
 {
     protected $fillable = ['name', 'description', 'file', 'image', 'year', 'key_id'];
 
-    protected $dates = ['date_time','created_at', 'updated_at', 'deleted_at'];
+    protected $dates = ['date_time','date_time_to','created_at', 'updated_at', 'deleted_at'];
 
     public function reCategory($array = [])
     {
@@ -89,4 +89,16 @@ class Course extends Model
     {
         return $this->hasMany("App\Rate",'parent_id')->where('type','course');
     }
+//
+//    public function getMonthlyTotalsBox()
+//    {
+//        $boxValues = Box::selectRaw('year(created_at) year, monthname(created_at) month,sum(pay_value) as total')
+//        ->groupBy('year', 'month')
+//        ->orderBy('year', 'desc')
+//        ->get();
+//        $bigArray = [];
+//        foreach ($boxValues as $value){
+//
+//        }
+//    }
 }

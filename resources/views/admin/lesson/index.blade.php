@@ -50,13 +50,13 @@
 
                                     <th scope="row">{{ $lesson->id }}</th>
 
-                                    <td>{{ $lesson->name }}</td>
+                                    <td>{{ $lesson->name ?? '' }}</td>
 
                                     <td><img width="40" src="{{ url('storage/app/'.$lesson->image) }}" /></td>
 
                                    <!--  <td>{{ $lesson->video_url }}</td> -->
 
-                                    <td>{{ $lesson->course->name }}</td>
+                                    <td>{{ $lesson->course->name ?? '' }}</td>
 
                                     <td style="width: 180px;">
 

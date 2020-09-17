@@ -131,4 +131,5 @@ class LessonController extends Controller
         $lesson->delete();
         return redirect()->route('admin::lesson.index')->with("success", "Deleted");
     }
+
 }
