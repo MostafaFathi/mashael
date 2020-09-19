@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Mail;
 
 Route::group(['namespace' => 'Admin' , 'prefix' => config('app.admin_prefix') ,'as' => 'admin::' ], function () {
 
-    Route::group(['namespace' => 'Auth' , 'middleware' => 'guest'], function () {
+    Route::group(['namespace' => 'Auth' , 'middleware' => 'guest:admin'], function () {
 
         Route::get('login','LoginController@showLoginForm')->name('login');
         Route::post('login','LoginController@login')->name('login');
@@ -32,7 +32,6 @@ Route::group(['namespace' => 'Admin' , 'prefix' => config('app.admin_prefix') ,'
     });
 
     Route::group(['middleware' => 'adminAuth' ], function () {
-
         Route::get('/', 'HomeController@index')->name('home');
         Route::get('/setting', 'HomeController@settings')->name('settings');
         Route::post('/setting', 'HomeController@settings_post');
@@ -70,7 +69,7 @@ Route::group(['namespace' => 'Admin' , 'prefix' => config('app.admin_prefix') ,'
 
 Route::group(['namespace' => 'Site' ,'as' => 'site::' ], function () {
 
-    Route::group(['namespace' => 'Auth' , 'middleware' => 'guest'], function () {
+    Route::group(['namespace' => 'Auth' , 'middleware' => 'guest:web'], function () {
 
         Route::get('login','LoginController@showLoginForm')->name('login');
         Route::post('login','LoginController@login')->name('login');

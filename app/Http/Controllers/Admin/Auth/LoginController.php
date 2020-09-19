@@ -66,7 +66,7 @@ class LoginController extends Controller
     {
         $this->guard('admin')->logout();
 
-        $request->session()->invalidate();
+//        $request->session()->invalidate();
 
         return redirect(config('app.admin_prefix'));
     }

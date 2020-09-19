@@ -225,10 +225,12 @@
                     <div class="payment">
 
                         <h3>الدفع</h3>
+                        <form action="#" id="persons-form">
 
-                        <div id="personsData">
+                            <div id="personsData">
 
-                        </div>
+                            </div>
+                        </form>
 
 
                         <p>من خلال الاستمرار في إجراء الطلب لدينا فأنت توافق على <a target="_blank"
@@ -280,6 +282,7 @@
                 order_id: "course-{{$course->id}}-{{auth()->user()->id}}",
                 ui_type: "iframe",
                 is_popup: "true",
+                persons: [],
                 ui_show_header: "true"
             },
             customer_info: {
@@ -325,15 +328,20 @@
                 for (i = 0; i < ($(this).val() - 1); i++) {
                     formpersons += `<div class="p-2">
                         <div><b>دعوة `+ parseInt(i+1) +`</b></div>
-                        <input placeholder="الاسم" name="persons[name][` + i + `]">
-                        <input placeholder="الايميل" name="persons[email][` + i + `]">
-                        <input placeholder="رقم الجوال" name="persons[phone][` + i + `]">
+                        <input placeholder="الاسم" class="person-serialize" name="persons[name][` + i + `]">
+                        <input placeholder="الايميل" class="person-serialize"  name="persons[email][` + i + `]">
+                        <input placeholder="رقم الجوال" class="person-serialize"  name="persons[phone][` + i + `]">
                     </div>`
                 }
 
                 $('#personsData').html(formpersons)
             }
-
+            $(document).on('keyup','.person-serialize',function () {
+                var value = $('#persons-form').serialize();
+                Config.settings.persons = value;
+                console.log(Config.settings.persons)
+                return false;
+            });
             Config.settings.amount = price;
 
 

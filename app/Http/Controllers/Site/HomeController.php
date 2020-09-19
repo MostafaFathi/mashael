@@ -427,7 +427,6 @@ return $sessions;
 
     function callback()
     {
-
         $transaction = Transaction::insert(request()->input());
         $array = explode("-", request()->input('order_id'));
         if ($array[0] == "session"){
